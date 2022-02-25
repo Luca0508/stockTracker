@@ -16,10 +16,13 @@ class SearchStockTableViewController: UITableViewController {
     
     var searching = false
     var delegate : SearchStockTableViewControllerDelegate?
-    var stockList = stockFullName.data
     
+    var stockList = stockFullName.data
+
     lazy var filterStockList = stockList
     var stock : stockFullName?
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,19 +65,20 @@ class SearchStockTableViewController: UITableViewController {
         let stock = filterStockList[indexPath.row]
         cell.symbolLabel.text = stock.Symbol
         cell.companyNameLabel.text = stock.CompanyName
-
+        
         return cell
     }
     
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let stock = filterStockList[indexPath.row]
-//        let stockPriceInfo = fetchItem(stockInfo: stock)
-        
+
         delegate?.searchStockTableViewController(self, addStock: stock)
         navigationController?.popViewController(animated: true)
     }
     
+    
+
 
 }
 
@@ -86,6 +90,7 @@ extension SearchStockTableViewController : UISearchResultsUpdating{
             filterStockList = stockList.filter({ stock in
                 stock.symbolName.localizedStandardContains(searchText)
             })
+            
         }else{
             searching = false
             filterStockList = stockList

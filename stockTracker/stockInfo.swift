@@ -47,22 +47,7 @@ struct stockFullName : Codable{
     var CompanyName : String{
         symbolName.components(separatedBy: "_")[1]
     }
-    
-    
-
 }
-
-
-struct searchResult : Codable{
-    let result : [searchStockInfo]
-}
-
-struct searchStockInfo : Codable{
-    let symbol : String
-    let description : String
-}
-
-
 
 
 extension stockFullName {
@@ -79,11 +64,8 @@ extension stockFullName {
                 print(error)
             }
         }
-        
-        
         return array
     }
-
 }
 
 

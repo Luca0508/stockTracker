@@ -33,9 +33,10 @@ class WatchListTableViewController: UITableViewController {
         }
         
         let timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { _ in
-            for stock in self.watchList{
-                self.fetchExistingItem(stockInfo: stock)
-            }
+//            for stock in self.watchList{
+//                self.fetchExistingItem(stockInfo: stock)
+//            }
+            self.tableView.reloadData()
         }
         timer.fire()
     }
@@ -86,6 +87,7 @@ class WatchListTableViewController: UITableViewController {
                         apiResponse.company = self.watchList[index].company
                         
                         self.watchList[index] = apiResponse
+                        
                     }
                     DispatchQueue.main.sync {
                         self.tableView.reloadData()
@@ -161,24 +163,12 @@ class WatchListTableViewController: UITableViewController {
 
     }
     
-
-    
     // Override to support conditional rearranging of the table view.
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the item to be re-orderable.
         return true
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 extension WatchListTableViewController : SearchStockTableViewControllerDelegate{
@@ -187,11 +177,6 @@ extension WatchListTableViewController : SearchStockTableViewControllerDelegate{
             stockInfo.symbol == stock.Symbol
         })){
             fetchItem(stockInfo: stock)
-            
         }
-        tableView.reloadData()
-        
     }
-    
-    
 }
