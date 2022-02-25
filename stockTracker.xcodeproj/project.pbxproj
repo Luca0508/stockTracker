@@ -13,6 +13,12 @@
 		A513694227C4B668001E94C2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A513694027C4B668001E94C2 /* Main.storyboard */; };
 		A513694427C4B66C001E94C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A513694327C4B66C001E94C2 /* Assets.xcassets */; };
 		A513694727C4B66C001E94C2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A513694527C4B66C001E94C2 /* LaunchScreen.storyboard */; };
+		A513694F27C4B765001E94C2 /* WatchListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A513694E27C4B765001E94C2 /* WatchListTableViewController.swift */; };
+		A513695127C4B886001E94C2 /* watchListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A513695027C4B886001E94C2 /* watchListTableViewCell.swift */; };
+		A513695327C4BF05001E94C2 /* stockInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A513695227C4BF05001E94C2 /* stockInfo.swift */; };
+		A523EF0A27C5518A00B1D980 /* CodableCSV in Frameworks */ = {isa = PBXBuildFile; productRef = A523EF0927C5518A00B1D980 /* CodableCSV */; };
+		A523EF0C27C5532000B1D980 /* SearchStockTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A523EF0B27C5532000B1D980 /* SearchStockTableViewController.swift */; };
+		A56F81B127C61367005032DD /* SearchStockTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56F81B027C61367005032DD /* SearchStockTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +30,11 @@
 		A513694327C4B66C001E94C2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A513694627C4B66C001E94C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A513694827C4B66C001E94C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A513694E27C4B765001E94C2 /* WatchListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListTableViewController.swift; sourceTree = "<group>"; };
+		A513695027C4B886001E94C2 /* watchListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = watchListTableViewCell.swift; sourceTree = "<group>"; };
+		A513695227C4BF05001E94C2 /* stockInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = stockInfo.swift; sourceTree = "<group>"; };
+		A523EF0B27C5532000B1D980 /* SearchStockTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStockTableViewController.swift; sourceTree = "<group>"; };
+		A56F81B027C61367005032DD /* SearchStockTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStockTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A523EF0A27C5518A00B1D980 /* CodableCSV in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,10 +68,15 @@
 		A513693927C4B668001E94C2 /* stockTracker */ = {
 			isa = PBXGroup;
 			children = (
+				A513695227C4BF05001E94C2 /* stockInfo.swift */,
 				A513693A27C4B668001E94C2 /* AppDelegate.swift */,
 				A513693C27C4B668001E94C2 /* SceneDelegate.swift */,
 				A513693E27C4B668001E94C2 /* ViewController.swift */,
 				A513694027C4B668001E94C2 /* Main.storyboard */,
+				A56F81B027C61367005032DD /* SearchStockTableViewCell.swift */,
+				A523EF0B27C5532000B1D980 /* SearchStockTableViewController.swift */,
+				A513695027C4B886001E94C2 /* watchListTableViewCell.swift */,
+				A513694E27C4B765001E94C2 /* WatchListTableViewController.swift */,
 				A513694327C4B66C001E94C2 /* Assets.xcassets */,
 				A513694527C4B66C001E94C2 /* LaunchScreen.storyboard */,
 				A513694827C4B66C001E94C2 /* Info.plist */,
@@ -83,6 +100,9 @@
 			dependencies = (
 			);
 			name = stockTracker;
+			packageProductDependencies = (
+				A523EF0927C5518A00B1D980 /* CodableCSV */,
+			);
 			productName = stockTracker;
 			productReference = A513693727C4B668001E94C2 /* stockTracker.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +131,9 @@
 				Base,
 			);
 			mainGroup = A513692E27C4B668001E94C2;
+			packageReferences = (
+				A523EF0827C5518A00B1D980 /* XCRemoteSwiftPackageReference "CodableCSV" */,
+			);
 			productRefGroup = A513693827C4B668001E94C2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -141,6 +164,11 @@
 				A513693F27C4B668001E94C2 /* ViewController.swift in Sources */,
 				A513693B27C4B668001E94C2 /* AppDelegate.swift in Sources */,
 				A513693D27C4B668001E94C2 /* SceneDelegate.swift in Sources */,
+				A513694F27C4B765001E94C2 /* WatchListTableViewController.swift in Sources */,
+				A513695327C4BF05001E94C2 /* stockInfo.swift in Sources */,
+				A523EF0C27C5532000B1D980 /* SearchStockTableViewController.swift in Sources */,
+				A56F81B127C61367005032DD /* SearchStockTableViewCell.swift in Sources */,
+				A513695127C4B886001E94C2 /* watchListTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,6 +386,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A523EF0827C5518A00B1D980 /* XCRemoteSwiftPackageReference "CodableCSV" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dehesa/CodableCSV";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.6.7;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A523EF0927C5518A00B1D980 /* CodableCSV */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A523EF0827C5518A00B1D980 /* XCRemoteSwiftPackageReference "CodableCSV" */;
+			productName = CodableCSV;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A513692F27C4B668001E94C2 /* Project object */;
 }
