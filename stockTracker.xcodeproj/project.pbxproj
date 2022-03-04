@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		A513693B27C4B668001E94C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A513693A27C4B668001E94C2 /* AppDelegate.swift */; };
 		A513693D27C4B668001E94C2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A513693C27C4B668001E94C2 /* SceneDelegate.swift */; };
-		A513693F27C4B668001E94C2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A513693E27C4B668001E94C2 /* ViewController.swift */; };
 		A513694227C4B668001E94C2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A513694027C4B668001E94C2 /* Main.storyboard */; };
 		A513694427C4B66C001E94C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A513694327C4B66C001E94C2 /* Assets.xcassets */; };
 		A513694727C4B66C001E94C2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A513694527C4B66C001E94C2 /* LaunchScreen.storyboard */; };
@@ -18,14 +17,18 @@
 		A513695327C4BF05001E94C2 /* stockInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A513695227C4BF05001E94C2 /* stockInfo.swift */; };
 		A523EF0A27C5518A00B1D980 /* CodableCSV in Frameworks */ = {isa = PBXBuildFile; productRef = A523EF0927C5518A00B1D980 /* CodableCSV */; };
 		A523EF0C27C5532000B1D980 /* SearchStockTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A523EF0B27C5532000B1D980 /* SearchStockTableViewController.swift */; };
+		A532E1F627D1FEDA004D61BB /* transactionReportTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A532E1F527D1FEDA004D61BB /* transactionReportTableViewController.swift */; };
+		A532E1F827D1FF07004D61BB /* transactionDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A532E1F727D1FF07004D61BB /* transactionDetailTableViewController.swift */; };
 		A56F81B127C61367005032DD /* SearchStockTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56F81B027C61367005032DD /* SearchStockTableViewCell.swift */; };
+		A58956E927D2176E008E71C4 /* transactionReportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58956E827D2176E008E71C4 /* transactionReportTableViewCell.swift */; };
+		A5A04FE827CC7C9200845C97 /* transactionRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A04FE727CC7C9200845C97 /* transactionRecord.swift */; };
+		A5D2B9FA27CE6AD5009F931F /* addTransactionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D2B9F927CE6AD4009F931F /* addTransactionTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A513693727C4B668001E94C2 /* stockTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = stockTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A513693A27C4B668001E94C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A513693C27C4B668001E94C2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A513693E27C4B668001E94C2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A513694127C4B668001E94C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A513694327C4B66C001E94C2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A513694627C4B66C001E94C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -34,7 +37,12 @@
 		A513695027C4B886001E94C2 /* watchListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = watchListTableViewCell.swift; sourceTree = "<group>"; };
 		A513695227C4BF05001E94C2 /* stockInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = stockInfo.swift; sourceTree = "<group>"; };
 		A523EF0B27C5532000B1D980 /* SearchStockTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStockTableViewController.swift; sourceTree = "<group>"; };
+		A532E1F527D1FEDA004D61BB /* transactionReportTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = transactionReportTableViewController.swift; sourceTree = "<group>"; };
+		A532E1F727D1FF07004D61BB /* transactionDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = transactionDetailTableViewController.swift; sourceTree = "<group>"; };
 		A56F81B027C61367005032DD /* SearchStockTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStockTableViewCell.swift; sourceTree = "<group>"; };
+		A58956E827D2176E008E71C4 /* transactionReportTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = transactionReportTableViewCell.swift; sourceTree = "<group>"; };
+		A5A04FE727CC7C9200845C97 /* transactionRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = transactionRecord.swift; sourceTree = "<group>"; };
+		A5D2B9F927CE6AD4009F931F /* addTransactionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addTransactionTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,10 +77,14 @@
 			isa = PBXGroup;
 			children = (
 				A513695227C4BF05001E94C2 /* stockInfo.swift */,
+				A5A04FE727CC7C9200845C97 /* transactionRecord.swift */,
 				A513693A27C4B668001E94C2 /* AppDelegate.swift */,
 				A513693C27C4B668001E94C2 /* SceneDelegate.swift */,
-				A513693E27C4B668001E94C2 /* ViewController.swift */,
 				A513694027C4B668001E94C2 /* Main.storyboard */,
+				A58956E827D2176E008E71C4 /* transactionReportTableViewCell.swift */,
+				A532E1F727D1FF07004D61BB /* transactionDetailTableViewController.swift */,
+				A532E1F527D1FEDA004D61BB /* transactionReportTableViewController.swift */,
+				A5D2B9F927CE6AD4009F931F /* addTransactionTableViewController.swift */,
 				A56F81B027C61367005032DD /* SearchStockTableViewCell.swift */,
 				A523EF0B27C5532000B1D980 /* SearchStockTableViewController.swift */,
 				A513695027C4B886001E94C2 /* watchListTableViewCell.swift */,
@@ -161,14 +173,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A513693F27C4B668001E94C2 /* ViewController.swift in Sources */,
+				A58956E927D2176E008E71C4 /* transactionReportTableViewCell.swift in Sources */,
 				A513693B27C4B668001E94C2 /* AppDelegate.swift in Sources */,
 				A513693D27C4B668001E94C2 /* SceneDelegate.swift in Sources */,
 				A513694F27C4B765001E94C2 /* WatchListTableViewController.swift in Sources */,
 				A513695327C4BF05001E94C2 /* stockInfo.swift in Sources */,
 				A523EF0C27C5532000B1D980 /* SearchStockTableViewController.swift in Sources */,
+				A532E1F827D1FF07004D61BB /* transactionDetailTableViewController.swift in Sources */,
 				A56F81B127C61367005032DD /* SearchStockTableViewCell.swift in Sources */,
+				A532E1F627D1FEDA004D61BB /* transactionReportTableViewController.swift in Sources */,
 				A513695127C4B886001E94C2 /* watchListTableViewCell.swift in Sources */,
+				A5D2B9FA27CE6AD5009F931F /* addTransactionTableViewController.swift in Sources */,
+				A5A04FE827CC7C9200845C97 /* transactionRecord.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

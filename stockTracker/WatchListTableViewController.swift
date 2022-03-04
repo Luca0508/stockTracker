@@ -33,9 +33,9 @@ class WatchListTableViewController: UITableViewController {
         }
         
         let timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { _ in
-//            for stock in self.watchList{
-//                self.fetchExistingItem(stockInfo: stock)
-//            }
+            for stock in self.watchList{
+                self.fetchExistingItem(stockInfo: stock)
+            }
             self.tableView.reloadData()
         }
         timer.fire()
@@ -89,6 +89,7 @@ class WatchListTableViewController: UITableViewController {
                         self.watchList[index] = apiResponse
                         
                     }
+                    
                     DispatchQueue.main.sync {
                         self.tableView.reloadData()
                     }
@@ -123,6 +124,7 @@ class WatchListTableViewController: UITableViewController {
         }else{
             cell.DayChangeLabel.textColor = .red
         }
+        
         
         cell.DayChangeLabel.text = "\(String(describing: stock.d))\n\(String(format: "%.2f", stock.dp ))%"
 
