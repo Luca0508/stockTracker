@@ -9,38 +9,77 @@ import UIKit
 
 class transactionDetailTableViewController: UITableViewController {
 
+    @IBOutlet weak var companyLabel: UILabel!
+    @IBOutlet weak var stockSymbolLabel: UILabel!
+    
+    var stockSymbol : String?
+    var company : String?
+    var stockRecord :stockTransaction?
+    
+    
+    var transactionRecord = [stockTransaction](){
+        didSet{
+            stockTransaction.saveTransactionRecord(transactionRecord)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        if let transactionRecord = stockTransaction.loadTransactionRecord(){
+            self.transactionRecord = transactionRecord
+        }
+        
+        
+        if let stockSymbol = stockSymbol,
+           let company = company{
+            stockSymbolLabel.text = stockSymbol
+            companyLabel.text = company
+        }
+        
+        if let stockRecord = transactionRecord.first(where: {$0.stockSymbol == stockSymbol}) {
+            self.stockRecord = stockRecord
+        }
+        
+        
     }
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
+    
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return (stockRecord?.transactions.count)!
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(TransactionDetailTableViewCell.self)", for: indexPath) as? TransactionDetailTableViewCell else {return UITableViewCell()}
+        
+        if let stock = stockRecord?.transactions[indexPath.row]{
+            cell.priceLabel.text = stock.price.description
+            cell.amountLabel.text = stock.total.description
+            cell.sharesLabel.text = stock.shares.description
+            
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy/MM/dd\nHH:mm"
+            cell.dateLabel.text = formatter.string(from: stock.tradeDate)
+            if stock.buyAction{
+                cell.ActionLabel.text = "BUY"
+            }else{
+                cell.ActionLabel.text = "SELL"
+            }
+            
+        }
+        
 
-        // Configure the cell...
-
+        
         return cell
     }
-    */
+    
 
+    
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

@@ -15,6 +15,7 @@
 		A513694F27C4B765001E94C2 /* WatchListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A513694E27C4B765001E94C2 /* WatchListTableViewController.swift */; };
 		A513695127C4B886001E94C2 /* watchListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A513695027C4B886001E94C2 /* watchListTableViewCell.swift */; };
 		A513695327C4BF05001E94C2 /* stockInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A513695227C4BF05001E94C2 /* stockInfo.swift */; };
+		A51A53F727D3189500B181BF /* TransactionDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51A53F627D3189500B181BF /* TransactionDetailTableViewCell.swift */; };
 		A523EF0A27C5518A00B1D980 /* CodableCSV in Frameworks */ = {isa = PBXBuildFile; productRef = A523EF0927C5518A00B1D980 /* CodableCSV */; };
 		A523EF0C27C5532000B1D980 /* SearchStockTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A523EF0B27C5532000B1D980 /* SearchStockTableViewController.swift */; };
 		A532E1F627D1FEDA004D61BB /* transactionReportTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A532E1F527D1FEDA004D61BB /* transactionReportTableViewController.swift */; };
@@ -36,6 +37,7 @@
 		A513694E27C4B765001E94C2 /* WatchListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListTableViewController.swift; sourceTree = "<group>"; };
 		A513695027C4B886001E94C2 /* watchListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = watchListTableViewCell.swift; sourceTree = "<group>"; };
 		A513695227C4BF05001E94C2 /* stockInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = stockInfo.swift; sourceTree = "<group>"; };
+		A51A53F627D3189500B181BF /* TransactionDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailTableViewCell.swift; sourceTree = "<group>"; };
 		A523EF0B27C5532000B1D980 /* SearchStockTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStockTableViewController.swift; sourceTree = "<group>"; };
 		A532E1F527D1FEDA004D61BB /* transactionReportTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = transactionReportTableViewController.swift; sourceTree = "<group>"; };
 		A532E1F727D1FF07004D61BB /* transactionDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = transactionDetailTableViewController.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 				A513693A27C4B668001E94C2 /* AppDelegate.swift */,
 				A513693C27C4B668001E94C2 /* SceneDelegate.swift */,
 				A513694027C4B668001E94C2 /* Main.storyboard */,
+				A51A53F627D3189500B181BF /* TransactionDetailTableViewCell.swift */,
 				A58956E827D2176E008E71C4 /* transactionReportTableViewCell.swift */,
 				A532E1F727D1FF07004D61BB /* transactionDetailTableViewController.swift */,
 				A532E1F527D1FEDA004D61BB /* transactionReportTableViewController.swift */,
@@ -174,6 +177,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A58956E927D2176E008E71C4 /* transactionReportTableViewCell.swift in Sources */,
+				A51A53F727D3189500B181BF /* TransactionDetailTableViewCell.swift in Sources */,
 				A513693B27C4B668001E94C2 /* AppDelegate.swift in Sources */,
 				A513693D27C4B668001E94C2 /* SceneDelegate.swift in Sources */,
 				A513694F27C4B765001E94C2 /* WatchListTableViewController.swift in Sources */,
