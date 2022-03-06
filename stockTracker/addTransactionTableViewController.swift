@@ -44,20 +44,25 @@ class addTransactionTableViewController: UITableViewController {
             self.transactionRecord = transactionRecord
         }
         
-        tradeDatePicker.backgroundColor = .white
-        
-        tableView.rowHeight = 90
         stockSymbolLabel.text = "Tap It to Insert Info"
         stockSymbolLabel.textColor = .lightGray
         stockSymbolLabel.font = UIFont.systemFont(ofSize: 15, weight: .light)
+        tradeDatePicker.backgroundColor = .white
+        
+        tableView.rowHeight = 90
         
         // close the keyboard when the user tap the screen
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.keyboardDismiss))
         tapGesture.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tapGesture)
-        
-    
     }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        
+//        priceTextField.text = ""
+//        sharesTextField.text = ""
+//        
+//    }
     
     // close the keyboard when the user tap the screen
     @objc func keyboardDismiss(){
@@ -133,12 +138,12 @@ class addTransactionTableViewController: UITableViewController {
                     
         let tradeDate = tradeDatePicker.date
         
-        let buyAction : Bool
+        let buyAction : String
         
         if buyActionSegmentedControl.selectedSegmentIndex == 0 {
-            buyAction = true
+            buyAction = "BUY"
         }else{
-            buyAction = false
+            buyAction = "SELL"
         }
         
        

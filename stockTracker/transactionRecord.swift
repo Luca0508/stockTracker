@@ -33,28 +33,10 @@ struct stockTransaction : Codable{
 }
 
 struct transaction : Codable{
-//    var stockSymbol : String
-    var buyAction : Bool
+    var buyAction : String
     var price : Double
     var shares : Double
     var total : Double
     var tradeDate : Date
-    
-//    static let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-//
-//    static func loadTransactionRecord() -> [transaction]?{
-//        let url = documentDirectory.appendingPathComponent("transactionRecord")
-//        guard let data = try? Data(contentsOf: url) else {return nil}
-//        let decoder = JSONDecoder()
-//        return try? decoder.decode([transaction].self, from: data)
-//
-//    }
-//
-//    static func saveTransactionRecord(_ transactionRecord : [Self]){
-//        let encoder = JSONEncoder()
-//        guard let data = try? encoder.encode(transactionRecord) else { return }
-//        let url = documentDirectory.appendingPathComponent("transactionRecord")
-//        try? data.write(to: url)
-//    }
 
 }

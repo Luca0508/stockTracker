@@ -21,13 +21,14 @@ class transactionReportTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        tableView.rowHeight = 70
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         if let transactionRecord = stockTransaction.loadTransactionRecord(){
             self.transactionRecord = transactionRecord
         }
         
-        tableView.rowHeight = 70
-
     }
 
     // MARK: - Table view data source

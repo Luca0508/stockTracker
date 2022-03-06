@@ -28,8 +28,6 @@ class transactionDetailTableViewController: UITableViewController {
         if let transactionRecord = stockTransaction.loadTransactionRecord(){
             self.transactionRecord = transactionRecord
         }
-        
-        
         if let stockSymbol = stockSymbol,
            let company = company{
             stockSymbolLabel.text = stockSymbol
@@ -39,8 +37,6 @@ class transactionDetailTableViewController: UITableViewController {
         if let stockRecord = transactionRecord.first(where: {$0.stockSymbol == stockSymbol}) {
             self.stockRecord = stockRecord
         }
-        
-        
     }
 
     // MARK: - Table view data source
@@ -58,27 +54,33 @@ class transactionDetailTableViewController: UITableViewController {
         
         if let stock = stockRecord?.transactions[indexPath.row]{
             cell.priceLabel.text = stock.price.description
-            cell.amountLabel.text = stock.total.description
-            cell.sharesLabel.text = stock.shares.description
+            if stock.buyAction == "BUY"{
+                cell.amountLabel.text = "-" + stock.total.description
+                cell.sharesLabel.text = "+" + stock.shares.description
+            }else{
+                cell.amountLabel.text = "+" + stock.total.description
+                cell.sharesLabel.text = "-" + stock.shares.description
+            }
+            
             
             let formatter = DateFormatter()
             formatter.dateFormat = "yyyy/MM/dd\nHH:mm"
             cell.dateLabel.text = formatter.string(from: stock.tradeDate)
-            if stock.buyAction{
-                cell.ActionLabel.text = "BUY"
-            }else{
-                cell.ActionLabel.text = "SELL"
-            }
-            
+            cell.ActionLabel.text = stock.buyAction
+            cell.overrideUserInterfaceStyle = .dark
         }
-        
-
-        
         return cell
     }
     
 
     
+    @IBAction func clickEditButton(_ sender: UIButton) {
+        super.setEditing(!tableView.isEditing, animated: true)
+        let title = tableView.isEditing ? "Done" : "Edit"
+        sender.setTitle(title, for: .normal)
+        tableView.allowsSelectionDuringEditing = true
+        tableView.reloadData()
+    }
     
     /*
     // Override to support conditional editing of the table view.
@@ -88,32 +90,46 @@ class transactionDetailTableViewController: UITableViewController {
     }
     */
 
-    /*
+   
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+            let alertController = UIAlertController(title :"Warning", message: "Are you sure you want to delete this transaction?\nData will be LOST!!!", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                self.stockRecord?.transactions.remove(at: indexPath.row)
+                self.tableView.deleteRows(at: [indexPath], with: .fade)
+            }))
+            alertController.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+            present(alertController, animated: true, completion: nil)
+            
+            
+        }
     }
-    */
 
-    /*
+
+    
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+        if let removeItem = stockRecord?.transactions[fromIndexPath.row]{
+            stockRecord?.transactions.remove(at: fromIndexPath.row)
+            stockRecord?.transactions.insert(removeItem, at: to.row)
+        }
     }
-    */
+    
 
-    /*
+    
     // Override to support conditional rearranging of the table view.
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the item to be re-orderable.
         return true
     }
-    */
+    
+//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//        stockRecord?.transactions.remove(at: indexPath.row)
+//        tableView.deleteRows(at: [indexPath], with: .automatic)
+//        tableView.reloadData()
+//    }
+    
 
     /*
     // MARK: - Navigation
