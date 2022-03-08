@@ -26,15 +26,14 @@ class SearchStockTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         searchBarSetting()
+
         tableView.rowHeight = 65
-    
-       
+        
+
     }
     
-
+    
     func searchBarSetting(){
         let searchController = UISearchController()
         searchController.searchResultsUpdater = self

@@ -6,69 +6,102 @@
 //
 
 import UIKit
+import CoreData
 
 class transactionDetailTableViewController: UITableViewController {
 
     @IBOutlet weak var companyLabel: UILabel!
     @IBOutlet weak var stockSymbolLabel: UILabel!
     
+    
     var stockSymbol : String?
     var company : String?
-    var stockRecord :stockTransaction?
     
+    var container : NSPersistentContainer!
+    var specificStockRecord = [StockRecord]()
+    var transactionRecord = [TransactionRecord]()
     
-    var transactionRecord = [stockTransaction](){
-        didSet{
-            stockTransaction.saveTransactionRecord(transactionRecord)
-        }
-    }
+//    var stockRecord :stockTransaction?
+//
+//
+//    var transactionRecord = [stockTransaction](){
+//        didSet{
+//            stockTransaction.saveTransactionRecord(transactionRecord)
+//        }
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let transactionRecord = stockTransaction.loadTransactionRecord(){
-            self.transactionRecord = transactionRecord
-        }
+//        if let transactionRecord = stockTransaction.loadTransactionRecord(){
+//            self.transactionRecord = transactionRecord
+//        }
+        
+        
+//        if let stockRecord = transactionRecord.first(where: {$0.stockSymbol == stockSymbol}) {
+//            self.stockRecord = stockRecord
+//        }
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         if let stockSymbol = stockSymbol,
            let company = company{
             stockSymbolLabel.text = stockSymbol
             companyLabel.text = company
+            
+            fetchSpecificStockRecord()
         }
         
-        if let stockRecord = transactionRecord.first(where: {$0.stockSymbol == stockSymbol}) {
-            self.stockRecord = stockRecord
-        }
     }
 
     // MARK: - Table view data source
+    
+    func fetchSpecificStockRecord(){
+        do{
+            let request = StockRecord.fetchRequest()
+            let pred = NSPredicate(format: "stockSymbol CONTAINS %@", stockSymbol!)
+            request.predicate = pred
+            specificStockRecord = try container.viewContext.fetch(request)
+            if specificStockRecord.count == 1{
+                transactionRecord = specificStockRecord[0].transactionInfo?.allObjects as! [TransactionRecord]
+            }
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }catch{
+            print(error)
+        }
+    }
 
     
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return (stockRecord?.transactions.count)!
+        return transactionRecord.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(TransactionDetailTableViewCell.self)", for: indexPath) as? TransactionDetailTableViewCell else {return UITableViewCell()}
         
-        if let stock = stockRecord?.transactions[indexPath.row]{
-            cell.priceLabel.text = stock.price.description
-            if stock.buyAction == "BUY"{
-                cell.amountLabel.text = "-" + stock.total.description
-                cell.sharesLabel.text = "+" + stock.shares.description
-            }else{
-                cell.amountLabel.text = "+" + stock.total.description
-                cell.sharesLabel.text = "-" + stock.shares.description
-            }
-            
-            
-            let formatter = DateFormatter()
-            formatter.dateFormat = "yyyy/MM/dd\nHH:mm"
-            cell.dateLabel.text = formatter.string(from: stock.tradeDate)
-            cell.ActionLabel.text = stock.buyAction
-            cell.overrideUserInterfaceStyle = .dark
+        let stock = transactionRecord[indexPath.row]
+        cell.priceLabel.text = stock.price.description
+        if stock.buyAction == "BUY"{
+            cell.amountLabel.text = "-" + stock.total.description
+            cell.sharesLabel.text = "+" + stock.shares.description
+        }else{
+            cell.amountLabel.text = "+" + stock.total.description
+            cell.sharesLabel.text = "-" + stock.shares.description
         }
+        
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/MM/dd\nHH:mm"
+        cell.dateLabel.text = formatter.string(from: stock.tradeDate!)
+        cell.ActionLabel.text = stock.buyAction
+        cell.overrideUserInterfaceStyle = .dark
+        
         return cell
     }
     
@@ -96,33 +129,27 @@ class transactionDetailTableViewController: UITableViewController {
         if editingStyle == .delete {
             let alertController = UIAlertController(title :"Warning", message: "Are you sure you want to delete this transaction?\nData will be LOST!!!", preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
-                self.stockRecord?.transactions.remove(at: indexPath.row)
+                let removeItem = self.transactionRecord[indexPath.row]
+                let removeTransaction = TransactionRecord(context: self.container.viewContext)
+                removeTransaction.tradeDate = removeItem.tradeDate
+                removeTransaction.price = removeItem.price
+                removeTransaction.shares = removeItem.shares
+                removeTransaction.buyAction = removeItem.buyAction
+                removeTransaction.total = removeItem.total
+                
+                
+                self.specificStockRecord[0].removeFromTransactionInfo(removeTransaction)
+                
+                self.container.saveContext()
                 self.tableView.deleteRows(at: [indexPath], with: .fade)
             }))
             alertController.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
             present(alertController, animated: true, completion: nil)
-            
-            
         }
     }
 
 
     
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-        if let removeItem = stockRecord?.transactions[fromIndexPath.row]{
-            stockRecord?.transactions.remove(at: fromIndexPath.row)
-            stockRecord?.transactions.insert(removeItem, at: to.row)
-        }
-    }
-    
-
-    
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
     
 //    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
 //        stockRecord?.transactions.remove(at: indexPath.row)

@@ -6,14 +6,16 @@
 //
 
 import UIKit
-//protocol addTransactionTableViewControllerDelegate{
-//    func addTransactionTableViewController(_ controller : addTransactionTableViewController, addTransaction :[stockTransaction])
-//}
+import CoreData
+
 
 class addTransactionTableViewController: UITableViewController {
+    
+   
+    var container : NSPersistentContainer!
+    
+    var stockRecords = [StockRecord]()
 
-//    var addTransactionDelegate : addTransactionTableViewControllerDelegate?
- 
     @IBOutlet weak var stockSymbolLabel: UILabel!
     
     @IBOutlet weak var buyActionSegmentedControl: UISegmentedControl!
@@ -32,17 +34,19 @@ class addTransactionTableViewController: UITableViewController {
     var stockSymbol : String?
     var company : String?
     
-    var transactionRecord = [stockTransaction](){
-        didSet{
-            stockTransaction.saveTransactionRecord(transactionRecord)
-        }
-    }
+//    var transactionRecord = [stockTransaction](){
+//        didSet{
+//            stockTransaction.saveTransactionRecord(transactionRecord)
+//        }
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let transactionRecord = stockTransaction.loadTransactionRecord(){
-            self.transactionRecord = transactionRecord
-        }
+//        if let transactionRecord = stockTransaction.loadTransactionRecord(){
+//            self.transactionRecord = transactionRecord
+//        }
+        fetchStockRecords()
+
         
         stockSymbolLabel.text = "Tap It to Insert Info"
         stockSymbolLabel.textColor = .lightGray
@@ -55,18 +59,17 @@ class addTransactionTableViewController: UITableViewController {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.keyboardDismiss))
         tapGesture.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tapGesture)
+        
+        setBackButton()
     }
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        
-//        priceTextField.text = ""
-//        sharesTextField.text = ""
-//        
-//    }
-    
+
     // close the keyboard when the user tap the screen
     @objc func keyboardDismiss(){
         self.view.endEditing(true)
+    }
+    
+    func setBackButton(){
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
     
@@ -121,7 +124,7 @@ class addTransactionTableViewController: UITableViewController {
                 return false
             }
         }
-        print(transactionRecord.count)
+        
                 
         return true
     }
@@ -132,10 +135,24 @@ class addTransactionTableViewController: UITableViewController {
         }
     }
     
+    func fetchStockRecords(){
+        do{
+            self.stockRecords = try container.viewContext.fetch(StockRecord.fetchRequest())
+            
+            print("fetch in addTransaction")
+
+        }catch{
+            print(error)
+        }
+        
+        
+    }
+    
+    
     
 
     func addTransactionData(){
-                    
+                            
         let tradeDate = tradeDatePicker.date
         
         let buyAction : String
@@ -151,12 +168,34 @@ class addTransactionTableViewController: UITableViewController {
            let shares = shares,
            let stockSymbol = stockSymbol,
            let company = company {
-            if let index = transactionRecord.firstIndex(where: {$0.stockSymbol == stockSymbol}){
-                transactionRecord[index].transactions.append(transaction(buyAction: buyAction, price: price, shares: shares, total: total, tradeDate: tradeDate))
+            
+            let transaction = TransactionRecord(context: container.viewContext)
+            transaction.price = price
+            transaction.shares = shares
+            transaction.total = total
+            transaction.buyAction = buyAction
+            transaction.tradeDate = tradeDate
+            
+            if let index = stockRecords.firstIndex(where: {$0.stockSymbol == stockSymbol}){
+                stockRecords[index].addToTransactionInfo(transaction)
                 
             }else{
-                transactionRecord.append(stockTransaction(stockSymbol: stockSymbol, company: company, transactions: [transaction(buyAction: buyAction, price: price, shares: shares, total: total, tradeDate: tradeDate)]))
+                let stock = StockRecord(context: container.viewContext)
+                stock.stockSymbol = stockSymbol
+                stock.company = company
+                stock.addToTransactionInfo(transaction)
             }
+            print("addTransaction")
+            
+            container.saveContext()
+            
+            
+//            if let index = transactionRecord.firstIndex(where: {$0.stockSymbol == stockSymbol}){
+//                transactionRecord[index].transactions.append(transaction(buyAction: buyAction, price: price, shares: shares, total: total, tradeDate: tradeDate))
+//
+//            }else{
+//                transactionRecord.append(stockTransaction(stockSymbol: stockSymbol, company: company, transactions: [transaction(buyAction: buyAction, price: price, shares: shares, total: total, tradeDate: tradeDate)]))
+//            }
         }
     }
     // MARK: - Table view data source

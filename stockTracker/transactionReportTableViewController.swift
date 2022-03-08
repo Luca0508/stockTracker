@@ -6,18 +6,14 @@
 //
 
 import UIKit
+import CoreData
 
 
 class transactionReportTableViewController: UITableViewController {
+    var container : NSPersistentContainer!
    
+    var stockRecords = [StockRecord]()
     
-    var transactionRecord = [stockTransaction](){
-        didSet{
-            stockTransaction.saveTransactionRecord(transactionRecord)
-        }
-    }
-    
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,25 +21,35 @@ class transactionReportTableViewController: UITableViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if let transactionRecord = stockTransaction.loadTransactionRecord(){
-            self.transactionRecord = transactionRecord
-        }
-        
+//        if let transactionRecord = stockTransaction.loadTransactionRecord(){
+//            self.transactionRecord = transactionRecord
+//        }
+        fetchStockRecords()
     }
 
     // MARK: - Table view data source
+    func fetchStockRecords(){
+        do{
+            self.stockRecords = try container.viewContext.fetch(StockRecord.fetchRequest())
+            print("fetch data in Report")
+
+        }catch{
+            print(error)
+        }
+                
+    }
 
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         
-        return  transactionRecord.count
+        return  stockRecords.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(transactionReportTableViewCell.self)", for: indexPath) as? transactionReportTableViewCell else {return UITableViewCell()}
-        let stock = transactionRecord[indexPath.row]
+        let stock = stockRecords[indexPath.row]
 
         cell.stockSymbolLabel.text = stock.stockSymbol
         cell.companyLabel.text = stock.company
@@ -63,9 +69,9 @@ class transactionReportTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let controller = segue.destination as? transactionDetailTableViewController
         if let row = tableView.indexPathForSelectedRow?.row{
-            let stock = transactionRecord[row]
+            let stock = stockRecords[row]
             controller?.stockSymbol = stock.stockSymbol
-            controller?.company = stock.company
+//            controller?.company = stock.company
         }
     }
     
@@ -89,9 +95,11 @@ class transactionReportTableViewController: UITableViewController {
     
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-        let removeItem = transactionRecord[fromIndexPath.row]
-        transactionRecord.remove(at: fromIndexPath.row)
-        transactionRecord.insert(removeItem, at: to.row)
+        let removeItem = stockRecords[fromIndexPath.row]
+        stockRecords.remove(at: fromIndexPath.row)
+        stockRecords.insert(removeItem, at: to.row)
+        
+        container.saveContext()
         tableView.reloadData()
 
     }
@@ -117,8 +125,3 @@ class transactionReportTableViewController: UITableViewController {
 
 }
 
-//extension transactionReportTableViewController : addTransactionTableViewControllerDelegate{
-//    func addTransactionTableViewController(_ controller : addTransactionTableViewController, addTransaction :[stockTransaction]){
-//        
-//    }
-//}

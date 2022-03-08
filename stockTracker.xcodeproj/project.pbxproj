@@ -18,6 +18,7 @@
 		A51A53F727D3189500B181BF /* TransactionDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51A53F627D3189500B181BF /* TransactionDetailTableViewCell.swift */; };
 		A523EF0A27C5518A00B1D980 /* CodableCSV in Frameworks */ = {isa = PBXBuildFile; productRef = A523EF0927C5518A00B1D980 /* CodableCSV */; };
 		A523EF0C27C5532000B1D980 /* SearchStockTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A523EF0B27C5532000B1D980 /* SearchStockTableViewController.swift */; };
+		A52C6FD427D5E5D400AA23CF /* transactionModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A52C6FD227D5E5D400AA23CF /* transactionModel.xcdatamodeld */; };
 		A532E1F627D1FEDA004D61BB /* transactionReportTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A532E1F527D1FEDA004D61BB /* transactionReportTableViewController.swift */; };
 		A532E1F827D1FF07004D61BB /* transactionDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A532E1F727D1FF07004D61BB /* transactionDetailTableViewController.swift */; };
 		A56F81B127C61367005032DD /* SearchStockTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56F81B027C61367005032DD /* SearchStockTableViewCell.swift */; };
@@ -39,6 +40,7 @@
 		A513695227C4BF05001E94C2 /* stockInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = stockInfo.swift; sourceTree = "<group>"; };
 		A51A53F627D3189500B181BF /* TransactionDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailTableViewCell.swift; sourceTree = "<group>"; };
 		A523EF0B27C5532000B1D980 /* SearchStockTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStockTableViewController.swift; sourceTree = "<group>"; };
+		A52C6FD327D5E5D400AA23CF /* transactionModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = transactionModel.xcdatamodel; sourceTree = "<group>"; };
 		A532E1F527D1FEDA004D61BB /* transactionReportTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = transactionReportTableViewController.swift; sourceTree = "<group>"; };
 		A532E1F727D1FF07004D61BB /* transactionDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = transactionDetailTableViewController.swift; sourceTree = "<group>"; };
 		A56F81B027C61367005032DD /* SearchStockTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStockTableViewCell.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 				A513694327C4B66C001E94C2 /* Assets.xcassets */,
 				A513694527C4B66C001E94C2 /* LaunchScreen.storyboard */,
 				A513694827C4B66C001E94C2 /* Info.plist */,
+				A52C6FD227D5E5D400AA23CF /* transactionModel.xcdatamodeld */,
 			);
 			path = stockTracker;
 			sourceTree = "<group>";
@@ -184,6 +187,7 @@
 				A513695327C4BF05001E94C2 /* stockInfo.swift in Sources */,
 				A523EF0C27C5532000B1D980 /* SearchStockTableViewController.swift in Sources */,
 				A532E1F827D1FF07004D61BB /* transactionDetailTableViewController.swift in Sources */,
+				A52C6FD427D5E5D400AA23CF /* transactionModel.xcdatamodeld in Sources */,
 				A56F81B127C61367005032DD /* SearchStockTableViewCell.swift in Sources */,
 				A532E1F627D1FEDA004D61BB /* transactionReportTableViewController.swift in Sources */,
 				A513695127C4B886001E94C2 /* watchListTableViewCell.swift in Sources */,
@@ -425,6 +429,19 @@
 			productName = CodableCSV;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		A52C6FD227D5E5D400AA23CF /* transactionModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A52C6FD327D5E5D400AA23CF /* transactionModel.xcdatamodel */,
+			);
+			currentVersion = A52C6FD327D5E5D400AA23CF /* transactionModel.xcdatamodel */;
+			path = transactionModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = A513692F27C4B668001E94C2 /* Project object */;
 }
