@@ -165,7 +165,7 @@
             <objects>
                 <tableViewController id="1Ss-rW-R5T" customClass="SearchStockTableViewController" customModule="stockTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="3S3-Cn-PET">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -179,13 +179,13 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="hnb-AZ-XrI">
                                             <rect key="frame" x="15" y="8.5" width="117.5" height="48.5"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Symbol" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3OO-I3-G9a">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Symbol" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3OO-I3-G9a">
                                                     <rect key="frame" x="0.0" y="0.0" width="65.5" height="23"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CompanyName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R8Y-3y-Q8H">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="CompanyName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R8Y-3y-Q8H">
                                                     <rect key="frame" x="0.0" y="28" width="117.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -215,7 +215,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wUv-LE-2xi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4687" y="-977"/>
+            <point key="canvasLocation" x="7425" y="-377"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="eiZ-S7-aZ7">
@@ -234,7 +234,6 @@
                         </tabBarAppearance>
                     </tabBar>
                     <connections>
-                        <segue destination="Vrq-iX-eA4" kind="relationship" relationship="viewControllers" id="ldF-JT-lcz"/>
                         <segue destination="Yax-QC-JXM" kind="relationship" relationship="viewControllers" id="HdM-1H-I0X"/>
                         <segue destination="Fva-jO-ENT" kind="relationship" relationship="viewControllers" id="KxI-ED-Bo3"/>
                     </connections>
@@ -248,7 +247,7 @@
             <objects>
                 <tableViewController id="Jwr-66-DbM" customClass="addTransactionTableViewController" customModule="stockTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="bSq-ag-Bmu">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <sections>
@@ -470,12 +469,10 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="ydI-wJ-cNC">
-                        <barButtonItem key="rightBarButtonItem" title="Add Transaction" id="v5N-AD-3ho">
-                            <imageReference key="image" image="plus" catalog="system" symbolScale="large"/>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="v5N-AD-3ho">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <action selector="addTransaction:" destination="Jwr-66-DbM" id="vIe-JZ-dJ1"/>
-                                <segue destination="Yax-QC-JXM" kind="show" identifier="showTransactionReport" id="u3u-13-fdZ"/>
+                                <action selector="clickSaveButton:" destination="Jwr-66-DbM" id="SiU-vm-BLE"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -491,7 +488,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gtc-pM-Ssc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3359" y="-579"/>
+            <point key="canvasLocation" x="6383" y="633"/>
         </scene>
         <!--Watch List-->
         <scene sceneID="Xh8-WB-ZUj">
@@ -523,13 +520,35 @@
             <objects>
                 <tableViewController id="kty-W5-Lrq" customClass="transactionReportTableViewController" customModule="stockTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="Ovp-zj-4zy">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="lXu-uZ-xkP">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="97"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3tH-jD-oyH">
+                                    <rect key="frame" x="142.5" y="33" width="129" height="31"/>
+                                    <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="filled" title="Add Transaction">
+                                        <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="baseBackgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </buttonConfiguration>
+                                    <connections>
+                                        <segue destination="Jwr-66-DbM" kind="show" identifier="showAddTransaction" id="UtK-QD-bKZ"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="labelColor"/>
+                            <constraints>
+                                <constraint firstItem="3tH-jD-oyH" firstAttribute="centerX" secondItem="lXu-uZ-xkP" secondAttribute="centerX" id="kAo-lB-rg3"/>
+                            </constraints>
+                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="transactionReportTableViewCell" rowHeight="90" id="Iwa-fk-jw1" customClass="transactionReportTableViewCell" customModule="stockTracker" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44.5" width="414" height="90"/>
+                                <rect key="frame" x="0.0" y="141.5" width="414" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Iwa-fk-jw1" id="3TH-ww-RVj">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
@@ -591,40 +610,14 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rVe-FL-QZL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3159" y="321"/>
-        </scene>
-        <!--Add Transaction-->
-        <scene sceneID="Yns-8u-B8g">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Vrq-iX-eA4" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Add Transaction" image="plus.square.fill.on.square.fill" catalog="system" id="O8X-PK-uqm">
-                        <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </tabBarItem>
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="yax-d9-02e"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="I5H-lB-jU5">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="barTintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <imageReference key="backIndicatorImage" image="xmark" catalog="system" symbolScale="large"/>
-                        <imageReference key="backIndicatorTransitionMaskImage" image="xmark" catalog="system" symbolScale="large"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Jwr-66-DbM" kind="relationship" relationship="rootViewController" id="0SV-LB-E8F"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dtU-q4-GAC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2148" y="-551"/>
+            <point key="canvasLocation" x="3157.971014492754" y="320.75892857142856"/>
         </scene>
         <!--Transaction Detail Table View Controller-->
         <scene sceneID="W3a-Al-xBW">
             <objects>
                 <tableViewController storyboardIdentifier="transactionDetailTableViewController" id="1NC-vK-aGi" customClass="transactionDetailTableViewController" customModule="stockTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="teI-nd-2no">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -632,8 +625,8 @@
                             <rect key="frame" x="0.0" y="0.0" width="414" height="198"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="v1h-Xc-9mp">
-                                    <rect key="frame" x="135.5" y="25" width="143" height="66"/>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="v1h-Xc-9mp">
+                                    <rect key="frame" x="135.5" y="25" width="143" height="58"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="StockSymbol" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Zi-hf-YMi">
                                             <rect key="frame" x="0.0" y="0.0" width="143" height="27.5"/>
@@ -642,26 +635,25 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Company" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GLA-R0-qhp">
-                                            <rect key="frame" x="34.5" y="45.5" width="74.5" height="20.5"/>
+                                            <rect key="frame" x="34.5" y="37.5" width="74.5" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                 </stackView>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QCK-ja-Qpb">
-                                    <rect key="frame" x="142.5" y="106" width="129" height="31"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QCK-ja-Qpb">
+                                    <rect key="frame" x="142.5" y="108" width="129" height="31"/>
                                     <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="filled" title="Add Transaction"/>
                                     <connections>
-                                        <segue destination="Vrq-iX-eA4" kind="show" id="rGl-0M-mfG"/>
+                                        <segue destination="Jwr-66-DbM" kind="show" identifier="addSymbolTransaction" id="0Qz-jH-Nkh"/>
                                     </connections>
                                 </button>
-                                <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillProportionally" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="MfC-g5-z1m">
-                                    <rect key="frame" x="12" y="157" width="390" height="20.5"/>
+                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="MfC-g5-z1m">
+                                    <rect key="frame" x="12" y="159" width="390" height="20.5"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hIX-ED-kRo">
                                             <rect key="frame" x="0.0" y="0.0" width="100" height="20.5"/>
@@ -714,9 +706,12 @@
                             <viewLayoutGuide key="safeArea" id="kL9-Xl-ZAs"/>
                             <color key="backgroundColor" systemColor="labelColor"/>
                             <constraints>
+                                <constraint firstItem="QCK-ja-Qpb" firstAttribute="top" secondItem="v1h-Xc-9mp" secondAttribute="bottom" constant="25" id="Kjc-mS-qMA"/>
                                 <constraint firstItem="v1h-Xc-9mp" firstAttribute="centerX" secondItem="biP-PE-76S" secondAttribute="centerX" id="OMv-7A-iJS"/>
+                                <constraint firstItem="QCK-ja-Qpb" firstAttribute="centerX" secondItem="biP-PE-76S" secondAttribute="centerX" id="bTx-9i-74e"/>
                                 <constraint firstItem="v1h-Xc-9mp" firstAttribute="top" secondItem="kL9-Xl-ZAs" secondAttribute="top" constant="25" id="bWx-oV-Qc9"/>
                                 <constraint firstItem="MfC-g5-z1m" firstAttribute="centerX" secondItem="biP-PE-76S" secondAttribute="centerX" id="dAz-ai-6QC"/>
+                                <constraint firstItem="MfC-g5-z1m" firstAttribute="top" secondItem="QCK-ja-Qpb" secondAttribute="bottom" constant="20" id="wdq-WE-65W"/>
                             </constraints>
                         </view>
                         <prototypes>
@@ -802,11 +797,12 @@
                     <connections>
                         <outlet property="companyLabel" destination="GLA-R0-qhp" id="xKS-gu-oBg"/>
                         <outlet property="stockSymbolLabel" destination="5Zi-hf-YMi" id="HWe-0v-e2R"/>
+                        <segue destination="Jwr-66-DbM" kind="show" identifier="editTransaction" id="dpa-Or-pla"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="45L-gi-UGf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4590" y="321"/>
+            <point key="canvasLocation" x="4670" y="1245"/>
         </scene>
         <!--Transaction Report-->
         <scene sceneID="g3A-V4-oJ8">
@@ -818,7 +814,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="ak3-Cb-nSI"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="fYi-kL-vKf">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -832,8 +828,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="u3u-13-fdZ"/>
-        <segue reference="rGl-0M-mfG"/>
+        <segue reference="dpa-Or-pla"/>
         <segue reference="sn4-Ls-Mkk"/>
     </inferredMetricsTieBreakers>
     <resources>
@@ -841,9 +836,6 @@
         <image name="chevron.right" catalog="system" width="96" height="128"/>
         <image name="list.bullet.rectangle.portrait.fill" catalog="system" width="115" height="128"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
-        <image name="plus" catalog="system" width="128" height="113"/>
-        <image name="plus.square.fill.on.square.fill" catalog="system" width="128" height="113"/>
-        <image name="xmark" catalog="system" width="128" height="113"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

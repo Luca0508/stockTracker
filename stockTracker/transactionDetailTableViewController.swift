@@ -13,79 +13,58 @@ class transactionDetailTableViewController: UITableViewController {
     @IBOutlet weak var companyLabel: UILabel!
     @IBOutlet weak var stockSymbolLabel: UILabel!
     
+    var fetchSpecificResultController : NSFetchedResultsController<TransactionRecord>!
+    var appDelegate = UIApplication.shared.delegate as! AppDelegate
+    var container : NSPersistentContainer!
     
+    var transactionRecords = [TransactionRecord]()
     var stockSymbol : String?
     var company : String?
     
-    var container : NSPersistentContainer!
-    var specificStockRecord = [StockRecord]()
-    var transactionRecord = [TransactionRecord]()
-    
-//    var stockRecord :stockTransaction?
-//
-//
-//    var transactionRecord = [stockTransaction](){
-//        didSet{
-//            stockTransaction.saveTransactionRecord(transactionRecord)
-//        }
-//    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-//        if let transactionRecord = stockTransaction.loadTransactionRecord(){
-//            self.transactionRecord = transactionRecord
-//        }
-        
-        
-//        if let stockRecord = transactionRecord.first(where: {$0.stockSymbol == stockSymbol}) {
-//            self.stockRecord = stockRecord
-//        }
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        if let stockSymbol = stockSymbol,
-           let company = company{
+        if let stockSymbol = stockSymbol {
             stockSymbolLabel.text = stockSymbol
-            companyLabel.text = company
-            
             fetchSpecificStockRecord()
         }
-        
     }
 
     // MARK: - Table view data source
     
+    // fetch the data filter by specfic stock symbol
     func fetchSpecificStockRecord(){
-        do{
-            let request = StockRecord.fetchRequest()
-            let pred = NSPredicate(format: "stockSymbol CONTAINS %@", stockSymbol!)
-            request.predicate = pred
-            specificStockRecord = try container.viewContext.fetch(request)
-            if specificStockRecord.count == 1{
-                transactionRecord = specificStockRecord[0].transactionInfo?.allObjects as! [TransactionRecord]
-            }
-            
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
+        transactionRecords.removeAll()
+        
+        let request = NSFetchRequest<TransactionRecord>(entityName: "TransactionRecord")
+        let sortDescripter = NSSortDescriptor(key: "tradeDate", ascending: false)
+        request.sortDescriptors = [sortDescripter]
+        let pred = NSPredicate(format: "stockSymbol CONTAINS %@", stockSymbol!)
+        request.predicate = pred
+        
+        let context = appDelegate.persistentContainer.viewContext
+        fetchSpecificResultController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        fetchSpecificResultController.delegate = self
+        
+        do {
+            try fetchSpecificResultController.performFetch()
+            if let fetchObject = fetchSpecificResultController.fetchedObjects{
+                self.transactionRecords = fetchObject
             }
         }catch{
-            print(error)
+            print("fetch data error in transaction detail\(error)")
         }
     }
-
     
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return transactionRecord.count
+        return transactionRecords.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(TransactionDetailTableViewCell.self)", for: indexPath) as? TransactionDetailTableViewCell else {return UITableViewCell()}
         
-        let stock = transactionRecord[indexPath.row]
+        let stock = transactionRecords[indexPath.row]
         cell.priceLabel.text = stock.price.description
         if stock.buyAction == "BUY"{
             cell.amountLabel.text = "-" + stock.total.description
@@ -104,68 +83,120 @@ class transactionDetailTableViewController: UITableViewController {
         
         return cell
     }
-    
-
-    
-    @IBAction func clickEditButton(_ sender: UIButton) {
-        super.setEditing(!tableView.isEditing, animated: true)
-        let title = tableView.isEditing ? "Done" : "Edit"
-        sender.setTitle(title, for: .normal)
-        tableView.allowsSelectionDuringEditing = true
-        tableView.reloadData()
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "editTransaction", sender: nil)
     }
     
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-   
-    // Override to support editing the table view.
+    // unwind method to send the data from here to addTransactionTableViewController
+//    @IBAction func unwindToTransactionDetail(_ unwindSegue: UIStoryboardSegue) {
+//        if let sourceViewController = unwindSegue.source as? addTransactionTableViewController{
+//            print("SourceView Is right")
+//        }
+////        if let transaction = sourceViewController.transaction{
+////            let context = appDelegate.persistentContainer.viewContext
+////
+////            if let _ = self.tableView.indexPathForSelectedRow?.row{
+////
+////            }else{
+////                context.insert(transaction)
+////                print("insertTransaction in detail")
+////            }
+////        }
+//        appDelegate.persistentContainer.saveContext()
+//        tableView.reloadData()
+//    }
+    
+    
+    // delete the transaction and add the alert before actually delete it
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let alertController = UIAlertController(title :"Warning", message: "Are you sure you want to delete this transaction?\nData will be LOST!!!", preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
-                let removeItem = self.transactionRecord[indexPath.row]
-                let removeTransaction = TransactionRecord(context: self.container.viewContext)
-                removeTransaction.tradeDate = removeItem.tradeDate
-                removeTransaction.price = removeItem.price
-                removeTransaction.shares = removeItem.shares
-                removeTransaction.buyAction = removeItem.buyAction
-                removeTransaction.total = removeItem.total
+                let removeItem = self.transactionRecords[indexPath.row]
                 
-                
-                self.specificStockRecord[0].removeFromTransactionInfo(removeTransaction)
-                
-                self.container.saveContext()
-                self.tableView.deleteRows(at: [indexPath], with: .fade)
+                self.appDelegate.persistentContainer.viewContext.delete(removeItem)
+                self.appDelegate.persistentContainer.saveContext()
             }))
+            
             alertController.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
             present(alertController, animated: true, completion: nil)
         }
     }
 
 
-    
-    
-//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//        stockRecord?.transactions.remove(at: indexPath.row)
-//        tableView.deleteRows(at: [indexPath], with: .automatic)
-//        tableView.reloadData()
-//    }
-    
+        // MARK: - Navigation
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    // prepare the data that will send to addTransactionViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if let controller = segue.destination as? addTransactionTableViewController{
+            controller.delegate = self
+            if segue.identifier == "addSymbolTransaction"{
+                controller.stockSymbol = self.stockSymbol
+            }else{
+                if let row = tableView.indexPathForSelectedRow?.row{
+                    controller.getTransaction = transactionRecords[row]
+                }
+            }
+        }
     }
-    */
+}
+
+extension transactionDetailTableViewController : addTransactionTableViewControllerDelegate{
+    func AddTransactionTableViewController(_ controller : addTransactionTableViewController, sendTransaction transaction:TransactionRecord){
+        let context = appDelegate.persistentContainer.viewContext
+        if let row = tableView.indexPathForSelectedRow?.row{
+            
+        }else{
+            context.insert(transaction)
+        }
+        appDelegate.persistentContainer.saveContext()
+        tableView.reloadData()
+    }
 
 }
+
+
+// extension for using NSFetchedResultsController
+extension transactionDetailTableViewController : NSFetchedResultsControllerDelegate{
+    
+    func controllerWillChangeContent( _ controller: NSFetchedResultsController<NSFetchRequestResult>){
+        tableView.beginUpdates()
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch type {
+        case .insert:
+            if let newIndexPath = newIndexPath{
+                tableView.insertRows(at: [newIndexPath], with: .automatic)
+            }
+        case .delete:
+            if let indexPath = indexPath {
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+            }
+        case .move:
+            if let indexPath = indexPath,
+            let newIndexPath = newIndexPath {
+                tableView.moveRow(at: indexPath, to: newIndexPath)
+            }
+        case .update:
+            if let indexPath = indexPath {
+                tableView.reloadRows(at: [indexPath], with: .automatic)
+            }
+        default:
+            tableView.reloadData()
+    
+        }
+        // remember to save the data back to local transactionRecords
+        if let fetchobject = controller.fetchedObjects{
+            transactionRecords = fetchobject as! [TransactionRecord]
+        }
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
+    }
+
+}
+
+
+

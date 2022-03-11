@@ -23,8 +23,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
             navControllers.forEach { (navController) in
                 switch navController.viewControllers[0] {
-                case let controller as addTransactionTableViewController:
-                    controller.container = appDelegate?.persistentContainer
                 case let controller as transactionReportTableViewController:
                     controller.container = appDelegate?.persistentContainer
                 case let controller as transactionDetailTableViewController:
