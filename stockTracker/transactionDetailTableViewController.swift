@@ -23,8 +23,10 @@ class transactionDetailTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let stockSymbol = stockSymbol {
+        if let stockSymbol = stockSymbol,
+           let company = company{
             stockSymbolLabel.text = stockSymbol
+            companyLabel.text = company
             fetchSpecificStockRecord()
         }
     }

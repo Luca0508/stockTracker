@@ -16,9 +16,9 @@ class transactionReportTableViewController: UITableViewController {
     var transactionRecords = [TransactionRecord]()
     var transaction : TransactionRecord?
     var company : String?
-    var uniqueStock : NSArray?
     var symbolList = Array<String>()
-    var newSymbol = false
+    var stockInfoList = stockFullName.data
+    
     
 
     override func viewDidLoad() {
@@ -46,7 +46,6 @@ class transactionReportTableViewController: UITableViewController {
         fetchedResultController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultController.delegate = self
         
-        
         do{
             try fetchedResultController.performFetch()
             if let fetchObject = fetchedResultController.fetchedObjects{
@@ -57,7 +56,6 @@ class transactionReportTableViewController: UITableViewController {
         }catch{
             print("fetch data error in transactionReport : \(error)")
         }
-        
     }
     
     // get the unique stock symbol
@@ -89,21 +87,6 @@ class transactionReportTableViewController: UITableViewController {
         }
 
     
-    func deleteAllData(_ entity:String) {
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
-        fetchRequest.returnsObjectsAsFaults = false
-        do {
-            let results = try container.viewContext.fetch(fetchRequest)
-            for object in results {
-                guard let objectData = object as? NSManagedObject else {continue}
-                container.viewContext.delete(objectData)
-            }
-        } catch let error {
-            print("Detele all data in \(entity) error :", error)
-        }
-    }
-    
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         
@@ -116,11 +99,19 @@ class transactionReportTableViewController: UITableViewController {
         
 
         cell.stockSymbolLabel.text = symbolList[indexPath.row]
-//        cell.companyLabel.text = stock.company
+        cell.companyLabel.text = getComanyName(stockSymbol: symbolList[indexPath.row])
         
         cell.overrideUserInterfaceStyle = .dark
 
         return cell
+    }
+    
+    func getComanyName (stockSymbol : String) -> String{
+        if let index = stockInfoList.firstIndex(where: {$0.Symbol == stockSymbol}){
+            return stockInfoList[index].CompanyName
+        }else{
+            return ""
+        }
     }
     
 
@@ -134,24 +125,16 @@ class transactionReportTableViewController: UITableViewController {
         if let controller = segue.destination as? transactionDetailTableViewController,
          let row = tableView.indexPathForSelectedRow?.row{
 //            let stock = transactionRecords[row]
-//            controller.stockSymbol = stock.stockSymbol
+
             let symbol = symbolList[row]
             controller.stockSymbol = symbol
-
+            controller.company = getComanyName(stockSymbol: symbol)
+            
         }
         
         if let addController = segue.destination as? addTransactionTableViewController{
             addController.delegate = self
         }
-    }
-    
-    
-    @IBAction func clickEditButton(_ sender: UIBarButtonItem) {
-        super.setEditing(!tableView.isEditing, animated: true)
-        sender.title = tableView.isEditing ? "Done" : "Edit"
-        tableView.allowsSelectionDuringEditing = true
-        tableView.reloadData()
-        
     }
     
     // remove the delete option while editing

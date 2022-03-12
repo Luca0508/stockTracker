@@ -58,6 +58,10 @@ class WatchListTableViewController: UITableViewController {
                     apiResponse.company = stockInfo.CompanyName
                     self.watchList.append(apiResponse)
                     
+                    DispatchQueue.main.sync {
+                        self.tableView.reloadData()
+                    }
+                    
                 }catch{
                     print(error)
                 }

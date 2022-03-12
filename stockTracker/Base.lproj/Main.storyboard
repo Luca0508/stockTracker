@@ -179,13 +179,13 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="hnb-AZ-XrI">
                                             <rect key="frame" x="15" y="8.5" width="117.5" height="48.5"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Symbol" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3OO-I3-G9a">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Symbol" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3OO-I3-G9a">
                                                     <rect key="frame" x="0.0" y="0.0" width="65.5" height="23"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CompanyName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R8Y-3y-Q8H">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="CompanyName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R8Y-3y-Q8H">
                                                     <rect key="frame" x="0.0" y="28" width="117.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -558,16 +558,19 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="dHa-Rl-Wd6">
-                                            <rect key="frame" x="40" y="22" width="99" height="46.5"/>
+                                            <rect key="frame" x="40" y="22" width="200" height="46.5"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="stockSymbol" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qjm-52-Pkt">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="stockSymbol" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qjm-52-Pkt">
                                                     <rect key="frame" x="0.0" y="0.0" width="99" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="company" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JgG-zs-8Ue">
-                                                    <rect key="frame" x="0.0" y="28.5" width="63" height="18"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="company" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JgG-zs-8Ue">
+                                                    <rect key="frame" x="0.0" y="28.5" width="200" height="18"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="200" id="J0I-Su-FX8"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -599,14 +602,7 @@
                             <outlet property="delegate" destination="kty-W5-Lrq" id="lZP-sM-4Sh"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="r15-QN-Fa5">
-                        <barButtonItem key="rightBarButtonItem" title="Edit" id="zP0-PN-dbp">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <connections>
-                                <action selector="clickEditButton:" destination="kty-W5-Lrq" id="kVX-qC-aC7"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="r15-QN-Fa5"/>
                     <connections>
                         <segue destination="1NC-vK-aGi" kind="show" identifier="showStockDetail" destinationCreationSelector="showTransactionDetail:" id="zfb-4L-0mC"/>
                     </connections>
@@ -628,25 +624,20 @@
                             <rect key="frame" x="0.0" y="0.0" width="414" height="198"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="v1h-Xc-9mp">
-                                    <rect key="frame" x="135.5" y="25" width="143" height="58"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="StockSymbol" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Zi-hf-YMi">
-                                            <rect key="frame" x="0.0" y="0.0" width="143" height="27.5"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Company" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GLA-R0-qhp">
-                                            <rect key="frame" x="34.5" y="37.5" width="74.5" height="20.5"/>
-                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </stackView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="StockSymbol" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Zi-hf-YMi">
+                                    <rect key="frame" x="135.5" y="25" width="143" height="27.5"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Company" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GLA-R0-qhp">
+                                    <rect key="frame" x="35" y="62.5" width="344" height="20.5"/>
+                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QCK-ja-Qpb">
-                                    <rect key="frame" x="142.5" y="108" width="129" height="31"/>
+                                    <rect key="frame" x="142.5" y="103" width="129" height="31"/>
                                     <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <state key="normal" title="Button"/>
@@ -656,7 +647,7 @@
                                     </connections>
                                 </button>
                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="MfC-g5-z1m">
-                                    <rect key="frame" x="12" y="159" width="390" height="20.5"/>
+                                    <rect key="frame" x="12" y="154" width="390" height="20.5"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hIX-ED-kRo">
                                             <rect key="frame" x="0.0" y="0.0" width="100" height="20.5"/>
@@ -709,11 +700,15 @@
                             <viewLayoutGuide key="safeArea" id="kL9-Xl-ZAs"/>
                             <color key="backgroundColor" systemColor="labelColor"/>
                             <constraints>
-                                <constraint firstItem="QCK-ja-Qpb" firstAttribute="top" secondItem="v1h-Xc-9mp" secondAttribute="bottom" constant="25" id="Kjc-mS-qMA"/>
-                                <constraint firstItem="v1h-Xc-9mp" firstAttribute="centerX" secondItem="biP-PE-76S" secondAttribute="centerX" id="OMv-7A-iJS"/>
+                                <constraint firstItem="kL9-Xl-ZAs" firstAttribute="trailing" secondItem="GLA-R0-qhp" secondAttribute="trailing" constant="35" id="5rn-7p-RER"/>
+                                <constraint firstItem="GLA-R0-qhp" firstAttribute="leading" secondItem="kL9-Xl-ZAs" secondAttribute="leading" constant="35" id="B4m-Db-okm"/>
+                                <constraint firstItem="GLA-R0-qhp" firstAttribute="centerX" secondItem="biP-PE-76S" secondAttribute="centerX" id="MMh-Re-0da"/>
+                                <constraint firstItem="QCK-ja-Qpb" firstAttribute="top" secondItem="GLA-R0-qhp" secondAttribute="bottom" constant="20" id="UG2-er-vav"/>
                                 <constraint firstItem="QCK-ja-Qpb" firstAttribute="centerX" secondItem="biP-PE-76S" secondAttribute="centerX" id="bTx-9i-74e"/>
-                                <constraint firstItem="v1h-Xc-9mp" firstAttribute="top" secondItem="kL9-Xl-ZAs" secondAttribute="top" constant="25" id="bWx-oV-Qc9"/>
+                                <constraint firstItem="GLA-R0-qhp" firstAttribute="top" secondItem="5Zi-hf-YMi" secondAttribute="bottom" constant="10" id="bU3-6v-UCX"/>
                                 <constraint firstItem="MfC-g5-z1m" firstAttribute="centerX" secondItem="biP-PE-76S" secondAttribute="centerX" id="dAz-ai-6QC"/>
+                                <constraint firstItem="5Zi-hf-YMi" firstAttribute="top" secondItem="kL9-Xl-ZAs" secondAttribute="top" constant="25" id="dTt-qZ-lxl"/>
+                                <constraint firstItem="5Zi-hf-YMi" firstAttribute="centerX" secondItem="biP-PE-76S" secondAttribute="centerX" id="oo1-7q-Bgm"/>
                                 <constraint firstItem="MfC-g5-z1m" firstAttribute="top" secondItem="QCK-ja-Qpb" secondAttribute="bottom" constant="20" id="wdq-WE-65W"/>
                             </constraints>
                         </view>
@@ -833,7 +828,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="dpa-Or-pla"/>
+        <segue reference="0Qz-jH-Nkh"/>
         <segue reference="sn4-Ls-Mkk"/>
     </inferredMetricsTieBreakers>
     <resources>
