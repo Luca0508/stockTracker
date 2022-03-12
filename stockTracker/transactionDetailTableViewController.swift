@@ -67,9 +67,13 @@ class transactionDetailTableViewController: UITableViewController {
         let stock = transactionRecords[indexPath.row]
         cell.priceLabel.text = stock.price.description
         if stock.buyAction == "BUY"{
+            cell.ActionLabel.textColor = .systemGreen
+            cell.sharesLabel.textColor = .systemGreen
             cell.amountLabel.text = "-" + stock.total.description
             cell.sharesLabel.text = "+" + stock.shares.description
         }else{
+            cell.ActionLabel.textColor = .systemRed
+            cell.sharesLabel.textColor = .systemRed
             cell.amountLabel.text = "+" + stock.total.description
             cell.sharesLabel.text = "-" + stock.shares.description
         }
@@ -86,26 +90,6 @@ class transactionDetailTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "editTransaction", sender: nil)
     }
-    
-    // unwind method to send the data from here to addTransactionTableViewController
-//    @IBAction func unwindToTransactionDetail(_ unwindSegue: UIStoryboardSegue) {
-//        if let sourceViewController = unwindSegue.source as? addTransactionTableViewController{
-//            print("SourceView Is right")
-//        }
-////        if let transaction = sourceViewController.transaction{
-////            let context = appDelegate.persistentContainer.viewContext
-////
-////            if let _ = self.tableView.indexPathForSelectedRow?.row{
-////
-////            }else{
-////                context.insert(transaction)
-////                print("insertTransaction in detail")
-////            }
-////        }
-//        appDelegate.persistentContainer.saveContext()
-//        tableView.reloadData()
-//    }
-    
     
     // delete the transaction and add the alert before actually delete it
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -144,7 +128,7 @@ class transactionDetailTableViewController: UITableViewController {
 extension transactionDetailTableViewController : addTransactionTableViewControllerDelegate{
     func AddTransactionTableViewController(_ controller : addTransactionTableViewController, sendTransaction transaction:TransactionRecord){
         let context = appDelegate.persistentContainer.viewContext
-        if let row = tableView.indexPathForSelectedRow?.row{
+        if let _ = tableView.indexPathForSelectedRow?.row{
             
         }else{
             context.insert(transaction)

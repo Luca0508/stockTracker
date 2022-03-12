@@ -34,6 +34,8 @@ class addTransactionTableViewController: UITableViewController {
     var shares : Double?
     var stockSymbol : String?
     var company : String?
+    var shareCellBackgroundColor = UIColor(red: 0, green: 150/255, blue: 0, alpha: 0.3)
+    var selectedSegmentColor = UIColor(red: 0, green: 150/255, blue: 0, alpha: 0.8)
     
 
     override func viewDidLoad() {
@@ -43,6 +45,7 @@ class addTransactionTableViewController: UITableViewController {
         stockSymbolLabel.textColor = .lightGray
         stockSymbolLabel.font = UIFont.systemFont(ofSize: 15, weight: .light)
         tradeDatePicker.backgroundColor = .white
+        
         
         tableView.rowHeight = 90
         
@@ -54,12 +57,33 @@ class addTransactionTableViewController: UITableViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         updateUI()
+        buyActionSegmentedControl.selectedSegmentTintColor = selectedSegmentColor
 //        setBackButton()
     }
 
     // close the keyboard when the user tap the screen
     @objc func keyboardDismiss(){
         self.view.endEditing(true)
+    }
+    
+    @IBAction func clickSegmentControl(_ sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0{
+            sender.selectedSegmentTintColor = UIColor(red: 0, green: 150/255, blue: 0, alpha: 0.8)
+            totalLabel.textColor = UIColor(red: 0, green: 150/255, blue: 0, alpha: 1)
+            shareCellBackgroundColor = UIColor(red: 0, green: 150/255, blue: 0, alpha: 0.3)
+            tableView.reloadData()
+            
+        }else{
+            sender.selectedSegmentTintColor = UIColor(red: 200/255, green: 0, blue: 0, alpha: 0.8)
+            totalLabel.textColor = UIColor(red: 200/255, green: 0, blue: 0, alpha: 1)
+            shareCellBackgroundColor = UIColor(red: 210/255, green: 0, blue: 0, alpha: 0.4)
+            tableView.reloadData()
+        }
+    }
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == 3{
+            cell.backgroundColor = shareCellBackgroundColor
+        }
     }
     
     // set the back button from navigation bar
@@ -81,8 +105,14 @@ class addTransactionTableViewController: UITableViewController {
             
             if transaction.buyAction == "BUY"{
                 buyActionSegmentedControl.selectedSegmentIndex = 0
+                totalLabel.textColor = UIColor(red: 0, green: 150/255, blue: 0, alpha: 1)
+                shareCellBackgroundColor = UIColor(red: 0, green: 150/255, blue: 0, alpha: 0.3)
+                
             }else{
                 buyActionSegmentedControl.selectedSegmentIndex = 1
+                totalLabel.textColor = UIColor(red: 200/255, green: 0, blue: 0, alpha: 1)
+                shareCellBackgroundColor = UIColor(red: 210/255, green: 0, blue: 0, alpha: 0.4)
+                selectedSegmentColor = UIColor(red: 200/255, green: 0, blue: 0, alpha: 0.8)
             }
             
             tradeDatePicker.date = transaction.tradeDate!
@@ -168,9 +198,7 @@ class addTransactionTableViewController: UITableViewController {
                 delegate?.AddTransactionTableViewController(self, sendTransaction: newTransaction)
                 
                 navigationController?.popViewController(animated: true)
-                print("delegate check")
-            }else{
-                print("delegate check fail")
+                
             }
         }
                 
@@ -225,7 +253,6 @@ class addTransactionTableViewController: UITableViewController {
             transactionRecord.stockSymbol = stockSymbol
             self.newTransaction = transactionRecord
             
-            print("addTransaction")
         }
     }
 }

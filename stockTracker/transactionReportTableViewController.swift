@@ -20,8 +20,6 @@ class transactionReportTableViewController: UITableViewController {
     var symbolList = Array<String>()
     var newSymbol = false
     
-    var uniqueFetchedResultController : NSFetchedResultsController<NSFetchRequestResult>!
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,6 +60,7 @@ class transactionReportTableViewController: UITableViewController {
         
     }
     
+    // get the unique stock symbol
     func groupby(){
         let groupbyDictionary = Dictionary(grouping: transactionRecords, by:{ $0.stockSymbol})
         symbolList.removeAll()

@@ -117,18 +117,16 @@ class WatchListTableViewController: UITableViewController {
         let stock = watchList[indexPath.row]
         cell.stockLabel.text = stock.symbol
         cell.companyNameLabel.text = stock.company
-        cell.DayHighLowLabel.text = "\(String(describing: stock.h))\n\(String(describing: stock.l))"
+        cell.DayHighLowLabel.text = "\(String(format: "%.3f", stock.h))\n\(String(format: "%.3f", stock.l ))"
         cell.priceLabel.text = stock.c.description
         if stock.d >= 0 {
             cell.DayChangeLabel.textColor = .green
         }else{
             cell.DayChangeLabel.textColor = .red
         }
-        
-        
         cell.DayChangeLabel.text = "\(String(describing: stock.d))\n\(String(format: "%.2f", stock.dp ))%"
-
-
+        
+        cell.overrideUserInterfaceStyle = .dark
         return cell
     }
     
