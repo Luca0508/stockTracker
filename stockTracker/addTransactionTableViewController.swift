@@ -34,9 +34,11 @@ class addTransactionTableViewController: UITableViewController {
     var shares : Double?
     var stockSymbol : String?
     var company : String?
+    var selectedStockSymbol : String?
+    
     var shareCellBackgroundColor = UIColor(red: 0, green: 150/255, blue: 0, alpha: 0.3)
     var selectedSegmentColor = UIColor(red: 0, green: 150/255, blue: 0, alpha: 0.8)
-    
+        
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,7 +60,7 @@ class addTransactionTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         updateUI()
         buyActionSegmentedControl.selectedSegmentTintColor = selectedSegmentColor
-//        setBackButton()
+
     }
 
     // close the keyboard when the user tap the screen
@@ -66,20 +68,24 @@ class addTransactionTableViewController: UITableViewController {
         self.view.endEditing(true)
     }
     
+    // set the color depending on segmented control
     @IBAction func clickSegmentControl(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0{
             sender.selectedSegmentTintColor = UIColor(red: 0, green: 150/255, blue: 0, alpha: 0.8)
             totalLabel.textColor = UIColor(red: 0, green: 150/255, blue: 0, alpha: 1)
             shareCellBackgroundColor = UIColor(red: 0, green: 150/255, blue: 0, alpha: 0.3)
+            
             tableView.reloadData()
             
         }else{
             sender.selectedSegmentTintColor = UIColor(red: 200/255, green: 0, blue: 0, alpha: 0.8)
             totalLabel.textColor = UIColor(red: 200/255, green: 0, blue: 0, alpha: 1)
             shareCellBackgroundColor = UIColor(red: 210/255, green: 0, blue: 0, alpha: 0.4)
+            
             tableView.reloadData()
         }
     }
+    
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row == 3{
             cell.backgroundColor = shareCellBackgroundColor
@@ -94,30 +100,33 @@ class addTransactionTableViewController: UITableViewController {
     func updateUI(){
         if let transaction = getTransaction{
             stockSymbol =  transaction.stockSymbol
+            selectedStockSymbol = stockSymbol
             stockSymbolLabel.text = stockSymbol
             setStockSymbolFont()
             price = transaction.price
             priceTextField.text = transaction.price.description
             shares = transaction.shares
-            sharesTextField.text = Int(transaction.shares).description
+            sharesTextField.text = Int(abs(transaction.shares)).description
             total = transaction.total
-            totalLabel.text = transaction.total.description
+            totalLabel.text = abs(total).description
             
             if transaction.buyAction == "BUY"{
                 buyActionSegmentedControl.selectedSegmentIndex = 0
                 totalLabel.textColor = UIColor(red: 0, green: 150/255, blue: 0, alpha: 1)
                 shareCellBackgroundColor = UIColor(red: 0, green: 150/255, blue: 0, alpha: 0.3)
-                
+                                
             }else{
                 buyActionSegmentedControl.selectedSegmentIndex = 1
                 totalLabel.textColor = UIColor(red: 200/255, green: 0, blue: 0, alpha: 1)
                 shareCellBackgroundColor = UIColor(red: 210/255, green: 0, blue: 0, alpha: 0.4)
                 selectedSegmentColor = UIColor(red: 200/255, green: 0, blue: 0, alpha: 0.8)
+                
             }
             
             tradeDatePicker.date = transaction.tradeDate!
             
         }else if let stockSymbol = stockSymbol {
+            selectedStockSymbol = stockSymbol
             stockSymbolLabel.text = stockSymbol
             setStockSymbolFont()
         }else{
@@ -139,6 +148,7 @@ class addTransactionTableViewController: UITableViewController {
         
         if let priceText = priceTextField.text,
            let sharesText = sharesTextField.text{
+            
             price = Double(priceText) ?? 0
             shares = Double(sharesText) ?? 0
             total = price! * shares!
@@ -150,7 +160,13 @@ class addTransactionTableViewController: UITableViewController {
     // go to SearchStockTableViewController
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0{
-            performSegue(withIdentifier: "showSearchStock", sender: self)
+            if selectedStockSymbol == nil{
+                performSegue(withIdentifier: "showSearchStock", sender: self)
+            }else{
+                let alertController = UIAlertController(title: "Warning!!!", message: "Cannot Edit Stock Here", preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                present(alertController, animated: true, completion: nil)
+            }
         }
     }
     
@@ -190,6 +206,7 @@ class addTransactionTableViewController: UITableViewController {
             if let _ = getTransaction {
                 print("check edit transaction data")
                 editTransactionData()
+
             }else{
                 print("check add transaction data")
                 addTransactionData()
@@ -198,31 +215,66 @@ class addTransactionTableViewController: UITableViewController {
                 delegate?.AddTransactionTableViewController(self, sendTransaction: newTransaction)
                 
                 navigationController?.popViewController(animated: true)
-                
+//                if let controller = storyboard?.instantiateViewController(withIdentifier: "\(transactionDetailTableViewController.self)") as? transactionDetailTableViewController{
+//                    navigationController?.pushViewController(controller, animated: true)
+//                }
+
             }
         }
-                
     }
-    
+    func checkSharesAndTotal(transaction : TransactionRecord){
+        if var shares = shares{
+            if buyActionSegmentedControl.selectedSegmentIndex == 0 {
+                newTransaction?.buyAction = "BUY"
+                if total > 0 {
+                    total = total * -1.0
+                }
+                if shares < 0 {
+                    shares = shares * -1.0
+                }
+            }else{
+                newTransaction?.buyAction = "SELL"
+                if total < 0 {
+                    total = total * -1.0
+                }
+                if shares > 0 {
+                    shares = shares * -1.0
+                }
+            }
+        }
+    }
     
     // deal with the data that will send back when the user want to edit the transaction
     func editTransactionData(){
         if let price = price,
-           let shares = shares,
+           var shares = shares,
            let stockSymbol = stockSymbol{
             
             newTransaction = getTransaction
             newTransaction?.stockSymbol = stockSymbol
             newTransaction?.price = price
-            newTransaction?.shares = shares
-            newTransaction?.total = total
+            
             newTransaction?.tradeDate = tradeDatePicker.date
             
             if buyActionSegmentedControl.selectedSegmentIndex == 0 {
                 newTransaction?.buyAction = "BUY"
+                if total > 0 {
+                    total = total * -1.0
+                }
+                if shares < 0 {
+                    shares = shares * -1.0
+                }
             }else{
                 newTransaction?.buyAction = "SELL"
+                if total < 0 {
+                    total = total * -1.0
+                }
+                if shares > 0 {
+                    shares = shares * -1.0
+                }
             }
+            newTransaction?.total = total
+            newTransaction?.shares = shares
             
             print("Edit Sucessfully")
             
@@ -233,22 +285,36 @@ class addTransactionTableViewController: UITableViewController {
     func addTransactionData(){
         let tradeDate = tradeDatePicker.date
         
-        let buyAction : String
-        if buyActionSegmentedControl.selectedSegmentIndex == 0 {
-            buyAction = "BUY"
-        }else{
-            buyAction = "SELL"
-        }
         
         if let price = price,
-           let shares = shares,
+           var shares = shares,
            let stockSymbol = stockSymbol{
             
             let transactionRecord = TransactionRecord(context: appDelegate.persistentContainer.viewContext)
+            
+            if buyActionSegmentedControl.selectedSegmentIndex == 0 {
+                transactionRecord.buyAction = "BUY"
+                if total > 0 {
+                    total = total * -1.0
+                }
+                if shares < 0 {
+                    shares = shares * -1.0
+                }
+            }else{
+                transactionRecord.buyAction = "SELL"
+                if total < 0 {
+                    total = total * -1.0
+                }
+                if shares > 0 {
+                    shares = shares * -1.0
+                }
+            }
+
+            
             transactionRecord.price = price
             transactionRecord.shares = shares
             transactionRecord.total = total
-            transactionRecord.buyAction = buyAction
+            
             transactionRecord.tradeDate = tradeDate
             transactionRecord.stockSymbol = stockSymbol
             self.newTransaction = transactionRecord
