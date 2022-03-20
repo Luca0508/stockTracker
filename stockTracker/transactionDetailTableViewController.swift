@@ -45,6 +45,7 @@ class transactionDetailTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         
         tableView.rowHeight = 80
         if let stockSymbol = stockSymbol,
@@ -58,7 +59,9 @@ class transactionDetailTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        setSession()
+        
+        
+        checkTime()
         
         if let stockStatisticsList = stockStatistics.loadStockStatistics(){
             self.stockStatisticsList = stockStatisticsList
@@ -82,6 +85,62 @@ class transactionDetailTableViewController: UITableViewController {
         super.viewWillDisappear(animated)
         websocket?.cancel()
         print("cancelWebsocket")
+    }
+    
+    func checkTime(){
+        
+        
+        var calandar = Calendar.current
+        let newYorkTimeZone = TimeZone(identifier: "America/New_York")!
+        calandar.timeZone = newYorkTimeZone
+        
+        let nineAM = calandar.date(bySettingHour: 9, minute: 0, second: 0, of: .now)
+        let fourPM = calandar.date(bySettingHour: 16, minute: 0, second: 0, of: .now)
+
+        
+
+        let now = Date().addingTimeInterval(TimeInterval.init(newYorkTimeZone.secondsFromGMT()))
+
+                
+        if !NSCalendar(identifier: .gregorian)!.isDateInWeekend(now) &&
+            now >= nineAM! &&
+            now <= fourPM!{
+            print("stockMarketOpen")
+            setSession()
+            
+        }else{
+            print("stockMarketClose")
+            print("now: \(now)")
+            if let stockSymbol = stockSymbol {
+                fetchStockPrice(stockSymbol: stockSymbol)
+            }
+        }
+    }
+    
+    func fetchStockPrice(stockSymbol : String){
+        let token = "c7occ8iad3idf06mr490"
+        
+        var stockUrlComponent = URLComponents(string: "https://finnhub.io/api/v1/quote")
+        stockUrlComponent?.queryItems = [
+            URLQueryItem(name: "symbol", value: stockSymbol),
+            URLQueryItem(name: "token", value: token)
+        ]
+        
+        URLSession.shared.dataTask(with: (stockUrlComponent?.url)!) { data, response, error in
+            if let data = data {
+                let decoder = JSONDecoder()
+                do{
+                    let apiResponse = try decoder.decode(stockPriceInfo.self, from: data)
+                    
+                    
+                    DispatchQueue.main.sync {
+                        self.marketPriceLabel.text = apiResponse.c.getCurrencyFormat()
+                    }
+                }catch{
+                    print(error)
+                }
+            }
+        }.resume()
     }
     
     

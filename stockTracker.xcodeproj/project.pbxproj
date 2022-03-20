@@ -88,6 +88,7 @@
 			children = (
 				A513695227C4BF05001E94C2 /* stockInfo.swift */,
 				A53CF93827E0ED9700D63441 /* stockStatistics.swift */,
+				A523F4CD27E37FF500AA40A5 /* websocketStockInfo.swift */,
 				A513693A27C4B668001E94C2 /* AppDelegate.swift */,
 				A513693C27C4B668001E94C2 /* SceneDelegate.swift */,
 				A513694027C4B668001E94C2 /* Main.storyboard */,
@@ -96,7 +97,6 @@
 				A532E1F727D1FF07004D61BB /* transactionDetailTableViewController.swift */,
 				A532E1F527D1FEDA004D61BB /* transactionReportTableViewController.swift */,
 				A552E98227E6F62700BC1415 /* doubleExtension.swift */,
-				A523F4CD27E37FF500AA40A5 /* websocketStockInfo.swift */,
 				A5D2B9F927CE6AD4009F931F /* addTransactionTableViewController.swift */,
 				A56F81B027C61367005032DD /* SearchStockTableViewCell.swift */,
 				A523EF0B27C5532000B1D980 /* SearchStockTableViewController.swift */,
