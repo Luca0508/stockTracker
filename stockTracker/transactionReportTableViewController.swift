@@ -248,7 +248,7 @@ class transactionReportTableViewController: UITableViewController {
             stockStatisticsList[index].totalQuantity = CumShares
             
             // get totalDollarCost
-            let totalCost = transactionRecords.reduce(0.0, {return $0 + $1.total})
+            let totalCost = changeStockTransactionRecords.reduce(0.0, {return $0 + $1.total})
             stockStatisticsList[index].totalDollarCost = totalCost
                    
             // average price
