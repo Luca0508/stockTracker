@@ -87,27 +87,23 @@ class transactionDetailTableViewController: UITableViewController {
         print("cancelWebsocket")
     }
     
+    // check whether the stock market is open or not, to decide which method to get the stock price
     func checkTime(){
-        
         
         var calandar = Calendar.current
         let newYorkTimeZone = TimeZone(identifier: "America/New_York")!
         calandar.timeZone = newYorkTimeZone
         
-        let nineAM = calandar.date(bySettingHour: 9, minute: 0, second: 0, of: .now)
+        let nineAM = calandar.date(bySettingHour: 9, minute: 30, second: 0, of: .now)
         let fourPM = calandar.date(bySettingHour: 16, minute: 0, second: 0, of: .now)
-
-        
 
         let now = Date().addingTimeInterval(TimeInterval.init(newYorkTimeZone.secondsFromGMT()))
 
-                
         if !NSCalendar(identifier: .gregorian)!.isDateInWeekend(now) &&
             now >= nineAM! &&
             now <= fourPM!{
             print("stockMarketOpen")
             setSession()
-            
         }else{
             print("stockMarketClose")
             print("now: \(now)")
@@ -117,6 +113,7 @@ class transactionDetailTableViewController: UITableViewController {
         }
     }
     
+    // get stock price by connect https api
     func fetchStockPrice(stockSymbol : String){
         let token = "c7occ8iad3idf06mr490"
         

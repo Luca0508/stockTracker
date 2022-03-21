@@ -23,7 +23,6 @@ struct stockStatistics : Codable{
     }
     
     
-    
     // average cost of you holding stock
     var AveragePrice: Double
     var prevAveragePrice : Double
