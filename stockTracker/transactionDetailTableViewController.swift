@@ -90,23 +90,25 @@ class transactionDetailTableViewController: UITableViewController {
     // check whether the stock market is open or not, to decide which method to get the stock price
     func checkTime(){
         
-        var calandar = Calendar.current
+       
         let newYorkTimeZone = TimeZone(identifier: "America/New_York")!
-        calandar.timeZone = newYorkTimeZone
-        
-        let nineAM = calandar.date(bySettingHour: 9, minute: 30, second: 0, of: .now)
-        let fourPM = calandar.date(bySettingHour: 16, minute: 0, second: 0, of: .now)
 
         let now = Date().addingTimeInterval(TimeInterval.init(newYorkTimeZone.secondsFromGMT()))
+        let nineAM = now.dateAt(hours: 9, minutes: 30).addingTimeInterval(TimeInterval.init(newYorkTimeZone.secondsFromGMT()))
+        let fourPM = now.dateAt(hours: 16, minutes: 0).addingTimeInterval(TimeInterval.init(newYorkTimeZone.secondsFromGMT()))
 
+        print("9am \(nineAM) ")
+        print("16pm \(fourPM) ")
+        print("now: \(now)")
+        
         if !NSCalendar(identifier: .gregorian)!.isDateInWeekend(now) &&
-            now >= nineAM! &&
-            now <= fourPM!{
+            now >= nineAM &&
+            now <= fourPM{
             print("stockMarketOpen")
             setSession()
         }else{
             print("stockMarketClose")
-            print("now: \(now)")
+            
             if let stockSymbol = stockSymbol {
                 fetchStockPrice(stockSymbol: stockSymbol)
             }
