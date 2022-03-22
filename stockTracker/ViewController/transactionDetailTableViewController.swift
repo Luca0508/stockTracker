@@ -100,7 +100,7 @@ class transactionDetailTableViewController: UITableViewController {
         print("9am \(nineAM) ")
         print("16pm \(fourPM) ")
         print("now: \(now)")
-        
+  
         if !NSCalendar(identifier: .gregorian)!.isDateInWeekend(now) &&
             now >= nineAM &&
             now <= fourPM{
