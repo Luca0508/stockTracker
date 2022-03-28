@@ -26,10 +26,23 @@
 		A552E98327E6F62700BC1415 /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A552E98227E6F62700BC1415 /* Double+Extension.swift */; };
 		A56F81B127C61367005032DD /* SearchStockTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56F81B027C61367005032DD /* SearchStockTableViewCell.swift */; };
 		A58956E927D2176E008E71C4 /* transactionReportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58956E827D2176E008E71C4 /* transactionReportTableViewCell.swift */; };
+		A5C2670A27F1B08800066CAF /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = A5C2670927F1B08800066CAF /* Charts */; };
 		A5D2B9FA27CE6AD5009F931F /* addTransactionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D2B9F927CE6AD4009F931F /* addTransactionTableViewController.swift */; };
-		A5D5707B27DF26CF0087487B /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = A5D5707A27DF26CF0087487B /* Charts */; };
 		A5E4675527E8D4D10083EE91 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E4675427E8D4D10083EE91 /* Date+Extension.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A5C2670E27F1B08D00066CAF /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		A513693727C4B668001E94C2 /* stockTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = stockTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -62,7 +75,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A523EF0A27C5518A00B1D980 /* CodableCSV in Frameworks */,
-				A5D5707B27DF26CF0087487B /* Charts in Frameworks */,
+				A5C2670A27F1B08800066CAF /* Charts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +87,7 @@
 			children = (
 				A513693927C4B668001E94C2 /* stockTracker */,
 				A513693827C4B668001E94C2 /* Products */,
+				A565BCC427F1AE9A00AF9FFF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,6 +115,13 @@
 				A52C6FD227D5E5D400AA23CF /* transactionModel.xcdatamodeld */,
 			);
 			path = stockTracker;
+			sourceTree = "<group>";
+		};
+		A565BCC427F1AE9A00AF9FFF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		A5959EC127E9B1E0007DD320 /* Model */ = {
@@ -155,6 +176,7 @@
 				A513693327C4B668001E94C2 /* Sources */,
 				A513693427C4B668001E94C2 /* Frameworks */,
 				A513693527C4B668001E94C2 /* Resources */,
+				A5C2670E27F1B08D00066CAF /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -163,7 +185,7 @@
 			name = stockTracker;
 			packageProductDependencies = (
 				A523EF0927C5518A00B1D980 /* CodableCSV */,
-				A5D5707A27DF26CF0087487B /* Charts */,
+				A5C2670927F1B08800066CAF /* Charts */,
 			);
 			productName = stockTracker;
 			productReference = A513693727C4B668001E94C2 /* stockTracker.app */;
@@ -389,6 +411,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3C6W9T3U27;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = stockTracker/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -416,6 +439,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3C6W9T3U27;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = stockTracker/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -484,7 +508,7 @@
 			package = A523EF0827C5518A00B1D980 /* XCRemoteSwiftPackageReference "CodableCSV" */;
 			productName = CodableCSV;
 		};
-		A5D5707A27DF26CF0087487B /* Charts */ = {
+		A5C2670927F1B08800066CAF /* Charts */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = A5D5707927DF26CF0087487B /* XCRemoteSwiftPackageReference "Charts" */;
 			productName = Charts;
