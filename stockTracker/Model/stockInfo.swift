@@ -7,7 +7,6 @@
 
 import Foundation
 import UIKit
-import CodableCSV
 
 struct stockPriceInfo: Codable{
     var symbol : String?
@@ -35,36 +34,6 @@ struct stockPriceInfo: Codable{
         let url = documentDirectory.appendingPathComponent("watchList")
         try? data.write(to: url)
         
-    }
-    
-    
-    
-}
-
-struct stockFullName : Codable{
-    var Symbol : String
-    let symbolName :String
-    var CompanyName : String{
-        symbolName.components(separatedBy: "_")[1]
-    }
-}
-
-
-extension stockFullName {
-    static var data :[Self]{
-        var array = [Self]()
-        if let data = NSDataAsset(name: "stockList")?.data {
-            let decoder = CSVDecoder{
-                $0.headerStrategy = .firstLine
-            }
-            do{
-                array = try decoder.decode([Self].self, from: data)
-                array = array.filter({!$0.Symbol.contains("^")})
-            }catch{
-                print(error)
-            }
-        }
-        return array
     }
 }
 

@@ -186,13 +186,13 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="hnb-AZ-XrI">
                                             <rect key="frame" x="15" y="8.5" width="117.5" height="48.5"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Symbol" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3OO-I3-G9a">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Symbol" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3OO-I3-G9a">
                                                     <rect key="frame" x="0.0" y="0.0" width="65.5" height="23"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CompanyName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R8Y-3y-Q8H">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="CompanyName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R8Y-3y-Q8H">
                                                     <rect key="frame" x="0.0" y="28" width="117.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -222,7 +222,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wUv-LE-2xi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5443" y="175"/>
+            <point key="canvasLocation" x="6352.1739130434789" y="174.77678571428569"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="eiZ-S7-aZ7">
@@ -243,6 +243,7 @@
                     <connections>
                         <segue destination="Yax-QC-JXM" kind="relationship" relationship="viewControllers" id="HdM-1H-I0X"/>
                         <segue destination="Fva-jO-ENT" kind="relationship" relationship="viewControllers" id="KxI-ED-Bo3"/>
+                        <segue destination="l9G-ZH-j1Z" kind="relationship" relationship="viewControllers" id="cWO-Pw-kV9"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZnG-1Q-udS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -499,7 +500,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gtc-pM-Ssc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4048" y="557"/>
+            <point key="canvasLocation" x="4957.971014492754" y="556.47321428571422"/>
         </scene>
         <!--Watch List-->
         <scene sceneID="Xh8-WB-ZUj">
@@ -685,7 +686,7 @@ Balance</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rVe-FL-QZL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2667" y="269"/>
+            <point key="canvasLocation" x="3576.811594202899" y="268.52678571428572"/>
         </scene>
         <!--Transaction Detail Table View Controller-->
         <scene sceneID="W3a-Al-xBW">
@@ -858,13 +859,13 @@ Balance</string>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="4f9-4A-K3R">
                                             <rect key="frame" x="172" y="5" width="88.5" height="43"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gX4-nL-soe">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Price" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gX4-nL-soe">
                                                     <rect key="frame" x="0.0" y="0.0" width="88.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shares" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yjy-LJ-Xw0">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Shares" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yjy-LJ-Xw0">
                                                     <rect key="frame" x="0.0" y="23.5" width="88.5" height="19.5"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1003,6 +1004,38 @@ Balance</string>
             </objects>
             <point key="canvasLocation" x="2667" y="1103"/>
         </scene>
+        <!--Import File View Controller-->
+        <scene sceneID="dqO-0N-Dac">
+            <objects>
+                <viewController id="UJe-71-Pmg" customClass="importFileViewController" customModule="stockTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JRA-Gg-7XO">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mta-XA-ydE">
+                                <rect key="frame" x="145" y="288" width="124.5" height="31"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Import CSV File">
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="baseBackgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="importFile:" destination="UJe-71-Pmg" eventType="touchUpInside" id="N45-p1-L3g"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="rEG-BP-eQj"/>
+                        <color key="backgroundColor" systemColor="labelColor"/>
+                        <constraints>
+                            <constraint firstItem="mta-XA-ydE" firstAttribute="centerX" secondItem="JRA-Gg-7XO" secondAttribute="centerX" id="d2D-Bl-Tmf"/>
+                            <constraint firstItem="mta-XA-ydE" firstAttribute="top" secondItem="rEG-BP-eQj" secondAttribute="top" constant="200" id="wd9-a0-DOy"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="ATj-pt-IjP"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="O6k-2m-Qa1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1137.68115942029" y="223.66071428571428"/>
+        </scene>
         <!--Transaction Report-->
         <scene sceneID="g3A-V4-oJ8">
             <objects>
@@ -1025,14 +1058,37 @@ Balance</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cfx-fD-wOC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1504" y="281"/>
+            <point key="canvasLocation" x="2413.04347826087" y="280.58035714285711"/>
+        </scene>
+        <!--Import Data-->
+        <scene sceneID="un6-j2-VOr">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="l9G-ZH-j1Z" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Import Data" id="LQd-8Q-rBa">
+                        <imageReference key="image" image="arrow.up.doc.on.clipboard" catalog="system" symbolScale="large"/>
+                        <color key="badgeColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="reh-d5-1Xl">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="UJe-71-Pmg" kind="relationship" relationship="rootViewController" id="IJ6-VR-dCv"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="odO-sc-nib" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="227.536231884058" y="223.66071428571428"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="dpa-Or-pla"/>
+        <segue reference="UtK-QD-bKZ"/>
         <segue reference="sn4-Ls-Mkk"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="arrow.up.doc.on.clipboard" catalog="system" width="116" height="128"/>
         <image name="chart.pie.fill" catalog="system" width="128" height="121"/>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
         <image name="list.bullet.rectangle.portrait.fill" catalog="system" width="115" height="128"/>

@@ -26,6 +26,10 @@
 		A552E98327E6F62700BC1415 /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A552E98227E6F62700BC1415 /* Double+Extension.swift */; };
 		A56F81B127C61367005032DD /* SearchStockTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56F81B027C61367005032DD /* SearchStockTableViewCell.swift */; };
 		A58956E927D2176E008E71C4 /* transactionReportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58956E827D2176E008E71C4 /* transactionReportTableViewCell.swift */; };
+		A5BF1D8227F4888C00061E73 /* importFileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5BF1D8127F4888C00061E73 /* importFileViewController.swift */; };
+		A5BF1D8627F48C5800061E73 /* CHCSVParser.m in Sources */ = {isa = PBXBuildFile; fileRef = A5BF1D8527F48C5800061E73 /* CHCSVParser.m */; };
+		A5BF1D8827F4A41C00061E73 /* stockFullName.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5BF1D8727F4A41C00061E73 /* stockFullName.swift */; };
+		A5BF1D8A27F4A4ED00061E73 /* importFileStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5BF1D8927F4A4ED00061E73 /* importFileStruct.swift */; };
 		A5C2670A27F1B08800066CAF /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = A5C2670927F1B08800066CAF /* Charts */; };
 		A5D2B9FA27CE6AD5009F931F /* addTransactionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D2B9F927CE6AD4009F931F /* addTransactionTableViewController.swift */; };
 		A5E4675527E8D4D10083EE91 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E4675427E8D4D10083EE91 /* Date+Extension.swift */; };
@@ -65,6 +69,12 @@
 		A552E98227E6F62700BC1415 /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		A56F81B027C61367005032DD /* SearchStockTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStockTableViewCell.swift; sourceTree = "<group>"; };
 		A58956E827D2176E008E71C4 /* transactionReportTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = transactionReportTableViewCell.swift; sourceTree = "<group>"; };
+		A5BF1D8127F4888C00061E73 /* importFileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = importFileViewController.swift; sourceTree = "<group>"; };
+		A5BF1D8327F48C5700061E73 /* stockTracker-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "stockTracker-Bridging-Header.h"; sourceTree = "<group>"; };
+		A5BF1D8427F48C5800061E73 /* CHCSVParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHCSVParser.h; sourceTree = "<group>"; };
+		A5BF1D8527F48C5800061E73 /* CHCSVParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHCSVParser.m; sourceTree = "<group>"; };
+		A5BF1D8727F4A41C00061E73 /* stockFullName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = stockFullName.swift; sourceTree = "<group>"; };
+		A5BF1D8927F4A4ED00061E73 /* importFileStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = importFileStruct.swift; sourceTree = "<group>"; };
 		A5D2B9F927CE6AD4009F931F /* addTransactionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addTransactionTableViewController.swift; sourceTree = "<group>"; };
 		A5E4675427E8D4D10083EE91 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -102,6 +112,8 @@
 		A513693927C4B668001E94C2 /* stockTracker */ = {
 			isa = PBXGroup;
 			children = (
+				A5BF1D8427F48C5800061E73 /* CHCSVParser.h */,
+				A5BF1D8527F48C5800061E73 /* CHCSVParser.m */,
 				A513693A27C4B668001E94C2 /* AppDelegate.swift */,
 				A513693C27C4B668001E94C2 /* SceneDelegate.swift */,
 				A513694027C4B668001E94C2 /* Main.storyboard */,
@@ -113,6 +125,7 @@
 				A513694527C4B66C001E94C2 /* LaunchScreen.storyboard */,
 				A513694827C4B66C001E94C2 /* Info.plist */,
 				A52C6FD227D5E5D400AA23CF /* transactionModel.xcdatamodeld */,
+				A5BF1D8327F48C5700061E73 /* stockTracker-Bridging-Header.h */,
 			);
 			path = stockTracker;
 			sourceTree = "<group>";
@@ -130,6 +143,8 @@
 				A523F4CD27E37FF500AA40A5 /* websocketStockInfo.swift */,
 				A53CF93827E0ED9700D63441 /* stockStatistics.swift */,
 				A513695227C4BF05001E94C2 /* stockInfo.swift */,
+				A5BF1D8727F4A41C00061E73 /* stockFullName.swift */,
+				A5BF1D8927F4A4ED00061E73 /* importFileStruct.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -137,6 +152,7 @@
 		A5959EC227E9B21B007DD320 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				A5BF1D8127F4888C00061E73 /* importFileViewController.swift */,
 				A532E1F727D1FF07004D61BB /* transactionDetailTableViewController.swift */,
 				A532E1F527D1FEDA004D61BB /* transactionReportTableViewController.swift */,
 				A5D2B9F927CE6AD4009F931F /* addTransactionTableViewController.swift */,
@@ -203,6 +219,7 @@
 				TargetAttributes = {
 					A513693627C4B668001E94C2 = {
 						CreatedOnToolsVersion = 13.1;
+						LastSwiftMigration = 1310;
 					};
 				};
 			};
@@ -250,12 +267,14 @@
 				A5E4675527E8D4D10083EE91 /* Date+Extension.swift in Sources */,
 				A51A53F727D3189500B181BF /* TransactionDetailTableViewCell.swift in Sources */,
 				A513693B27C4B668001E94C2 /* AppDelegate.swift in Sources */,
+				A5BF1D8627F48C5800061E73 /* CHCSVParser.m in Sources */,
 				A513693D27C4B668001E94C2 /* SceneDelegate.swift in Sources */,
 				A513694F27C4B765001E94C2 /* WatchListTableViewController.swift in Sources */,
 				A513695327C4BF05001E94C2 /* stockInfo.swift in Sources */,
 				A523F4CE27E37FF500AA40A5 /* websocketStockInfo.swift in Sources */,
 				A523EF0C27C5532000B1D980 /* SearchStockTableViewController.swift in Sources */,
 				A552E98327E6F62700BC1415 /* Double+Extension.swift in Sources */,
+				A5BF1D8A27F4A4ED00061E73 /* importFileStruct.swift in Sources */,
 				A532E1F827D1FF07004D61BB /* transactionDetailTableViewController.swift in Sources */,
 				A52C6FD427D5E5D400AA23CF /* transactionModel.xcdatamodeld in Sources */,
 				A56F81B127C61367005032DD /* SearchStockTableViewCell.swift in Sources */,
@@ -263,6 +282,8 @@
 				A532E1F627D1FEDA004D61BB /* transactionReportTableViewController.swift in Sources */,
 				A513695127C4B886001E94C2 /* watchListTableViewCell.swift in Sources */,
 				A5D2B9FA27CE6AD5009F931F /* addTransactionTableViewController.swift in Sources */,
+				A5BF1D8827F4A41C00061E73 /* stockFullName.swift in Sources */,
+				A5BF1D8227F4888C00061E73 /* importFileViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,11 +430,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3C6W9T3U27;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = stockTracker/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -427,6 +451,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = hoodie.stockTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "stockTracker/stockTracker-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -437,11 +463,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3C6W9T3U27;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = stockTracker/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -455,6 +484,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = hoodie.stockTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "stockTracker/stockTracker-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
