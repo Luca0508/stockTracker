@@ -21,6 +21,7 @@ class transactionReportTableViewController: UITableViewController {
     var stockInfoList = stockFullName.data
     
     var changeStockSymbol : String?
+    var changeImportedSymbolSet : Set<String>?
     
     
     @IBOutlet weak var pieChartView: PieChartView!
@@ -41,6 +42,12 @@ class transactionReportTableViewController: UITableViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        if let changeImportedSymbolSet = changeImportedSymbolSet {
+            for changeSymbol in changeImportedSymbolSet{
+                updateStockStatistics(changeStockSymbol: changeSymbol)
+            }
+        }
+        
         if let stockStatisticsList = stockStatistics.loadStockStatistics(){
             self.stockStatisticsList = stockStatisticsList
         }

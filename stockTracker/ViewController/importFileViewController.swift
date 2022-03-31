@@ -8,8 +8,13 @@
 import UIKit
 import UniformTypeIdentifiers
 import CodableCSV
+import CoreData
 
 class importFileViewController: UIViewController, UIDocumentPickerDelegate{
+    
+    var container : NSPersistentContainer!
+    var fetchedResultController : NSFetchedResultsController<TransactionRecord>!
+    var appDelegate = UIApplication.shared.delegate as! AppDelegate
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,39 +40,70 @@ class importFileViewController: UIViewController, UIDocumentPickerDelegate{
     
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
         print("file was selected")
+        
+        let context = appDelegate.persistentContainer.viewContext
+        var importedTransactionRecords = [TransactionRecord]()
 
-        var importArray = [stockTracker.importFile]()
         
         let rows = NSArray(contentsOfCSVURL: url, options:CHCSVParserOptions.sanitizesFields)!
+        var changeSymbolSet = Set<String>()
+        var correctFormat = true
         
-        for row in rows{
-            if let rowString = row as? [String]{
+        for (index, rowContent) in rows.enumerated(){
+            if index != 0, let rowString = rowContent as? [String]{
                 let importFileStruct = stockTracker.importFile.init(raw:rowString)
-                importArray.append(importFileStruct)
+                let transactionRecord = TransactionRecord(context: appDelegate.persistentContainer.viewContext)
                 
-                print("convert [string] successfully ")
+                if let symbol = importFileStruct.symbol,
+                   let date = importFileStruct.date,
+                   let price = importFileStruct.price,
+                   let shares = importFileStruct.shares,
+                   let buyAction = importFileStruct.buyAction,
+                   let total = importFileStruct.total{
+                    
+                    transactionRecord.stockSymbol = symbol
+                    transactionRecord.tradeDate = date
+                    transactionRecord.price = price
+                    transactionRecord.shares = shares
+                    transactionRecord.buyAction = buyAction
+                    transactionRecord.total = total
+                    
+                    changeSymbolSet.insert(symbol)
+                    importedTransactionRecords.append(transactionRecord)
+                }else{
+                    correctFormat = false
+                    
+                    let alertController = UIAlertController(title: "Warning!!!", message: "The format of imported .csv file may be wrong. Please follow the instruction below", preferredStyle: .alert)
+                    alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    present(alertController, animated: true, completion: nil)
+                    
+                    break
+                }
+                
             }else{
                 print("Failed to convert [String]")
             }
         }
-        importArray.removeFirst()
-        print(importArray)
-
-        for transaction in importArray{
-            if let symbol = transaction.symbol,
-               let date = transaction.date,
-               let price = transaction.price,
-               let shares = transaction.shares,
-               let buyAction = transaction.buyAction{
-                
-            }else{
-                let alertController = UIAlertController(title: "Warning!!!", message: "The format of imported csv file may be wrong. Please follow the instruction to import csv file", preferredStyle: .alert)
-                alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        
+        
+        print(changeSymbolSet)
+        
+        if correctFormat{
+            for transaction in importedTransactionRecords{
+                context.insert(transaction)
+            }
+            appDelegate.persistentContainer.saveContext()
+            
+            if let navigationController = tabBarController?.viewControllers?[0] as? UINavigationController,
+               let mainController = navigationController.viewControllers.first as? transactionReportTableViewController {
+                mainController.changeImportedSymbolSet = changeSymbolSet
+//                present(mainController, animated: true, completion: nil)
             }
             
-                
+        }else {
+            print("the format of imported file is incorrect")
         }
-//        print("price : \(importArray[1].price)")
     }
-    
 }
+
+

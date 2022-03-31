@@ -215,13 +215,10 @@ class addTransactionTableViewController: UITableViewController {
                 delegate?.AddTransactionTableViewController(self, sendTransaction: newTransaction)
                 
                 navigationController?.popViewController(animated: true)
-//                if let controller = storyboard?.instantiateViewController(withIdentifier: "\(transactionDetailTableViewController.self)") as? transactionDetailTableViewController{
-//                    navigationController?.pushViewController(controller, animated: true)
-//                }
-
             }
         }
     }
+    
     func checkSharesAndTotal(transaction : TransactionRecord){
         if var shares = shares{
             if buyActionSegmentedControl.selectedSegmentIndex == 0 {

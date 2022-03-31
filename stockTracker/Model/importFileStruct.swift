@@ -33,16 +33,32 @@ struct importFile : Codable{
         }
     }
     
-    var shares : Double?{
-        return Double(descriptionArray[1])
-    }
-    
     var symbol : String?{
         return descriptionArray[2]
     }
     
     var price : Double?{
         return Double(descriptionArray[4])
+    }
+    
+    var shares : Double?{
+        if let buyAction = buyAction,
+           let share = Double(descriptionArray[1]){
+            if buyAction == "BUY"{
+                return share
+            }else {
+                return share * -1.0
+            }
+        }
+        return nil
+    }
+    
+    var total: Double?{
+        if let price = price,
+           let shares = shares{
+            return price * shares * -1.0
+        }
+        return nil
     }
     
     init(raw:[String]) {
