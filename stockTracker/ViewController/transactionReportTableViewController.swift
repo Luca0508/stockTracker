@@ -248,13 +248,15 @@ class transactionReportTableViewController: UITableViewController {
             }
         }
         
+        // get totalDollarCost
+        let totalCost = changeStockTransactionRecords.reduce(0.0, {return $0 + $1.total})
+        
         if let index = stockStatisticsList.firstIndex(where: {$0.stockSymbol == changeStockSymbol}){
             
             // total Shares
             stockStatisticsList[index].totalQuantity = CumShares
             
             // get totalDollarCost
-            let totalCost = changeStockTransactionRecords.reduce(0.0, {return $0 + $1.total})
             stockStatisticsList[index].totalDollarCost = totalCost
                    
             // average price
@@ -264,6 +266,8 @@ class transactionReportTableViewController: UITableViewController {
             // earning
             stockStatisticsList[index].earning = CumEarning
             stockStatisticsList[index].earningChange = Earning
+        }else{
+            stockStatisticsList.append(stockStatistics(stockSymbol: changeStockSymbol, totalQuantity: CumShares, totalDollarCost: totalCost,  AveragePrice: AvgPrice, prevAveragePrice: prevAvgPrice, earning: CumEarning, earningChange: Earning))
         }
     }
 }
