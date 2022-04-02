@@ -35,11 +35,14 @@ class transactionReportTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = 70
+        
+//        reset all the transaction
 //        resetAllRecords(in: "TransactionRecord")
+//        stockStatisticsList.removeAll()
+        
         fetchData()
-                
-
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if let changeImportedSymbolSet = changeImportedSymbolSet {
@@ -83,8 +86,12 @@ class transactionReportTableViewController: UITableViewController {
     func groupby(){
         let groupbyDictionary = Dictionary(grouping: transactionRecords, by:{ $0.stockSymbol})
         symbolList.removeAll()
+        
         for s in groupbyDictionary.keys{
-            symbolList.append(s!)
+            if let s = s{
+                symbolList.append(s)
+            }
+            
         }
     }
     

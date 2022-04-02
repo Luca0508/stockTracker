@@ -73,7 +73,7 @@ class importFileViewController: UIViewController, UIDocumentPickerDelegate{
                 }else{
                     correctFormat = false
                     
-                    let alertController = UIAlertController(title: "Warning!!!", message: "The format of imported .csv file may be wrong. Please follow the instruction below", preferredStyle: .alert)
+                    let alertController = UIAlertController(title: "Warning!!!", message: "The format of imported .csv file may be wrong.(error in line : \(index) of the imported file). Please follow the instruction below", preferredStyle: .alert)
                     alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                     present(alertController, animated: true, completion: nil)
                     
@@ -81,12 +81,9 @@ class importFileViewController: UIViewController, UIDocumentPickerDelegate{
                 }
                 
             }else{
-                print("Failed to convert [String]")
+                print("Failed to convert [String] or Line 1")
             }
         }
-        
-        
-        print(changeSymbolSet)
         
         if correctFormat{
             for transaction in importedTransactionRecords{
@@ -97,8 +94,11 @@ class importFileViewController: UIViewController, UIDocumentPickerDelegate{
             if let navigationController = tabBarController?.viewControllers?[0] as? UINavigationController,
                let mainController = navigationController.viewControllers.first as? transactionReportTableViewController {
                 mainController.changeImportedSymbolSet = changeSymbolSet
-//                present(mainController, animated: true, completion: nil)
             }
+            
+            let alertController = UIAlertController(title: "Message", message: "Import the File Successfully!!! Please check them in Transaction Report.", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: .default))
+            present(alertController, animated: true, completion: nil)
             
         }else {
             print("the format of imported file is incorrect")

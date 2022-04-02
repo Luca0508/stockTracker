@@ -859,13 +859,13 @@ Balance</string>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="4f9-4A-K3R">
                                             <rect key="frame" x="172" y="5" width="88.5" height="43"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gX4-nL-soe">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Price" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gX4-nL-soe">
                                                     <rect key="frame" x="0.0" y="0.0" width="88.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shares" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yjy-LJ-Xw0">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Shares" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yjy-LJ-Xw0">
                                                     <rect key="frame" x="0.0" y="23.5" width="88.5" height="19.5"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1002,7 +1002,7 @@ Balance</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="45L-gi-UGf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2667" y="1103"/>
+            <point key="canvasLocation" x="3619" y="1276"/>
         </scene>
         <!--Import File View Controller-->
         <scene sceneID="dqO-0N-Dac">
@@ -1013,7 +1013,7 @@ Balance</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mta-XA-ydE">
-                                <rect key="frame" x="145" y="288" width="124.5" height="31"/>
+                                <rect key="frame" x="145" y="188" width="124.5" height="31"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Import CSV File">
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="baseBackgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1022,19 +1022,38 @@ Balance</string>
                                     <action selector="importFile:" destination="UJe-71-Pmg" eventType="touchUpInside" id="N45-p1-L3g"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a83-EK-6zc">
+                                <rect key="frame" x="35" y="259" width="344" height="129"/>
+                                <string key="text">Please follow the format below to import the csv file 1. Please put the header 2. DATE :  MM/dd/yyyy 3. Description : having space between each word and don't forget "@"</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="importedfileformat" translatesAutoresizingMaskIntoConstraints="NO" id="ZLY-qk-UBk">
+                                <rect key="frame" x="60" y="428" width="294" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="IYh-ug-RLj"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="rEG-BP-eQj"/>
                         <color key="backgroundColor" systemColor="labelColor"/>
                         <constraints>
+                            <constraint firstItem="a83-EK-6zc" firstAttribute="leading" secondItem="rEG-BP-eQj" secondAttribute="leading" constant="35" id="0Kd-zs-meP"/>
+                            <constraint firstItem="ZLY-qk-UBk" firstAttribute="top" secondItem="a83-EK-6zc" secondAttribute="bottom" constant="40" id="0d6-hL-Q7T"/>
+                            <constraint firstItem="rEG-BP-eQj" firstAttribute="trailing" secondItem="a83-EK-6zc" secondAttribute="trailing" constant="35" id="ABV-Ts-cVv"/>
+                            <constraint firstItem="a83-EK-6zc" firstAttribute="top" secondItem="mta-XA-ydE" secondAttribute="bottom" constant="40" id="Xkl-2i-Sgh"/>
+                            <constraint firstItem="ZLY-qk-UBk" firstAttribute="leading" secondItem="rEG-BP-eQj" secondAttribute="leading" constant="60" id="ZnH-bu-6O6"/>
                             <constraint firstItem="mta-XA-ydE" firstAttribute="centerX" secondItem="JRA-Gg-7XO" secondAttribute="centerX" id="d2D-Bl-Tmf"/>
-                            <constraint firstItem="mta-XA-ydE" firstAttribute="top" secondItem="rEG-BP-eQj" secondAttribute="top" constant="200" id="wd9-a0-DOy"/>
+                            <constraint firstItem="rEG-BP-eQj" firstAttribute="trailing" secondItem="ZLY-qk-UBk" secondAttribute="trailing" constant="60" id="muh-ST-y7n"/>
+                            <constraint firstItem="mta-XA-ydE" firstAttribute="top" secondItem="rEG-BP-eQj" secondAttribute="top" constant="100" id="wd9-a0-DOy"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ATj-pt-IjP"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O6k-2m-Qa1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1137.68115942029" y="223.66071428571428"/>
+            <point key="canvasLocation" x="1492.753623188406" y="1735.7142857142856"/>
         </scene>
         <!--Transaction Report-->
         <scene sceneID="g3A-V4-oJ8">
@@ -1080,7 +1099,7 @@ Balance</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="odO-sc-nib" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="227.536231884058" y="223.66071428571428"/>
+            <point key="canvasLocation" x="239" y="1737"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
@@ -1091,6 +1110,7 @@ Balance</string>
         <image name="arrow.up.doc.on.clipboard" catalog="system" width="116" height="128"/>
         <image name="chart.pie.fill" catalog="system" width="128" height="121"/>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
+        <image name="importedfileformat" width="524" height="320"/>
         <image name="list.bullet.rectangle.portrait.fill" catalog="system" width="115" height="128"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <systemColor name="labelColor">
