@@ -31,11 +31,7 @@ class importFileViewController: UIViewController, UIDocumentPickerDelegate{
         DocumentPickerController.delegate = self
         DocumentPickerController.allowsMultipleSelection = false
     
-        
         present(DocumentPickerController, animated: true, completion: nil)
-        
-        
-        
     }
     
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D0B938CE97A57DF42E8D992 /* Pods_stockTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29A46CC6223B25F0A2C0D5B6 /* Pods_stockTracker.framework */; };
 		A513693B27C4B668001E94C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A513693A27C4B668001E94C2 /* AppDelegate.swift */; };
 		A513693D27C4B668001E94C2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A513693C27C4B668001E94C2 /* SceneDelegate.swift */; };
 		A513694227C4B668001E94C2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A513694027C4B668001E94C2 /* Main.storyboard */; };
@@ -25,6 +26,8 @@
 		A53CF93927E0ED9700D63441 /* stockStatistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53CF93827E0ED9700D63441 /* stockStatistics.swift */; };
 		A552E98327E6F62700BC1415 /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A552E98227E6F62700BC1415 /* Double+Extension.swift */; };
 		A56F81B127C61367005032DD /* SearchStockTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56F81B027C61367005032DD /* SearchStockTableViewCell.swift */; };
+		A580C79927F995DC004BCEF7 /* definitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A580C79827F995DC004BCEF7 /* definitionViewController.swift */; };
+		A580C79B27F99627004BCEF7 /* sideMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A580C79A27F99627004BCEF7 /* sideMenuTableViewController.swift */; };
 		A58956E927D2176E008E71C4 /* transactionReportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58956E827D2176E008E71C4 /* transactionReportTableViewCell.swift */; };
 		A5BF1D8227F4888C00061E73 /* importFileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5BF1D8127F4888C00061E73 /* importFileViewController.swift */; };
 		A5BF1D8627F48C5800061E73 /* CHCSVParser.m in Sources */ = {isa = PBXBuildFile; fileRef = A5BF1D8527F48C5800061E73 /* CHCSVParser.m */; };
@@ -49,6 +52,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		29A46CC6223B25F0A2C0D5B6 /* Pods_stockTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_stockTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		55A449917104170AC9064B38 /* Pods-stockTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-stockTracker.debug.xcconfig"; path = "Target Support Files/Pods-stockTracker/Pods-stockTracker.debug.xcconfig"; sourceTree = "<group>"; };
 		A513693727C4B668001E94C2 /* stockTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = stockTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A513693A27C4B668001E94C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A513693C27C4B668001E94C2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -68,6 +73,8 @@
 		A53CF93827E0ED9700D63441 /* stockStatistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = stockStatistics.swift; sourceTree = "<group>"; };
 		A552E98227E6F62700BC1415 /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		A56F81B027C61367005032DD /* SearchStockTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStockTableViewCell.swift; sourceTree = "<group>"; };
+		A580C79827F995DC004BCEF7 /* definitionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = definitionViewController.swift; sourceTree = "<group>"; };
+		A580C79A27F99627004BCEF7 /* sideMenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = sideMenuTableViewController.swift; path = ../../../../../.Trash/sideMenuTableViewController.swift; sourceTree = "<group>"; };
 		A58956E827D2176E008E71C4 /* transactionReportTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = transactionReportTableViewCell.swift; sourceTree = "<group>"; };
 		A5BF1D8127F4888C00061E73 /* importFileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = importFileViewController.swift; sourceTree = "<group>"; };
 		A5BF1D8327F48C5700061E73 /* stockTracker-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "stockTracker-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -77,6 +84,7 @@
 		A5BF1D8927F4A4ED00061E73 /* importFileStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = importFileStruct.swift; sourceTree = "<group>"; };
 		A5D2B9F927CE6AD4009F931F /* addTransactionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addTransactionTableViewController.swift; sourceTree = "<group>"; };
 		A5E4675427E8D4D10083EE91 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		C3C2CC5F12AE76C6FAA6CF91 /* Pods-stockTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-stockTracker.release.xcconfig"; path = "Target Support Files/Pods-stockTracker/Pods-stockTracker.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,18 +94,29 @@
 			files = (
 				A523EF0A27C5518A00B1D980 /* CodableCSV in Frameworks */,
 				A5C2670A27F1B08800066CAF /* Charts in Frameworks */,
+				1D0B938CE97A57DF42E8D992 /* Pods_stockTracker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0DB16C11B0E8B995A18CCDD8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				55A449917104170AC9064B38 /* Pods-stockTracker.debug.xcconfig */,
+				C3C2CC5F12AE76C6FAA6CF91 /* Pods-stockTracker.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		A513692E27C4B668001E94C2 = {
 			isa = PBXGroup;
 			children = (
 				A513693927C4B668001E94C2 /* stockTracker */,
 				A513693827C4B668001E94C2 /* Products */,
 				A565BCC427F1AE9A00AF9FFF /* Frameworks */,
+				0DB16C11B0E8B995A18CCDD8 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -133,6 +152,7 @@
 		A565BCC427F1AE9A00AF9FFF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				29A46CC6223B25F0A2C0D5B6 /* Pods_stockTracker.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -152,6 +172,8 @@
 		A5959EC227E9B21B007DD320 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				A580C79A27F99627004BCEF7 /* sideMenuTableViewController.swift */,
+				A580C79827F995DC004BCEF7 /* definitionViewController.swift */,
 				A5BF1D8127F4888C00061E73 /* importFileViewController.swift */,
 				A532E1F727D1FF07004D61BB /* transactionDetailTableViewController.swift */,
 				A532E1F527D1FEDA004D61BB /* transactionReportTableViewController.swift */,
@@ -189,10 +211,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A513694B27C4B66C001E94C2 /* Build configuration list for PBXNativeTarget "stockTracker" */;
 			buildPhases = (
+				7CDF4B3E935B5F81553EC593 /* [CP] Check Pods Manifest.lock */,
 				A513693327C4B668001E94C2 /* Sources */,
 				A513693427C4B668001E94C2 /* Frameworks */,
 				A513693527C4B668001E94C2 /* Resources */,
 				A5C2670E27F1B08D00066CAF /* Embed Frameworks */,
+				1F9C7158BD8548624C0222FE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -258,6 +282,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1F9C7158BD8548624C0222FE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-stockTracker/Pods-stockTracker-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-stockTracker/Pods-stockTracker-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-stockTracker/Pods-stockTracker-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7CDF4B3E935B5F81553EC593 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-stockTracker-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A513693327C4B668001E94C2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -270,6 +336,7 @@
 				A5BF1D8627F48C5800061E73 /* CHCSVParser.m in Sources */,
 				A513693D27C4B668001E94C2 /* SceneDelegate.swift in Sources */,
 				A513694F27C4B765001E94C2 /* WatchListTableViewController.swift in Sources */,
+				A580C79B27F99627004BCEF7 /* sideMenuTableViewController.swift in Sources */,
 				A513695327C4BF05001E94C2 /* stockInfo.swift in Sources */,
 				A523F4CE27E37FF500AA40A5 /* websocketStockInfo.swift in Sources */,
 				A523EF0C27C5532000B1D980 /* SearchStockTableViewController.swift in Sources */,
@@ -279,6 +346,7 @@
 				A52C6FD427D5E5D400AA23CF /* transactionModel.xcdatamodeld in Sources */,
 				A56F81B127C61367005032DD /* SearchStockTableViewCell.swift in Sources */,
 				A53CF93927E0ED9700D63441 /* stockStatistics.swift in Sources */,
+				A580C79927F995DC004BCEF7 /* definitionViewController.swift in Sources */,
 				A532E1F627D1FEDA004D61BB /* transactionReportTableViewController.swift in Sources */,
 				A513695127C4B886001E94C2 /* watchListTableViewCell.swift in Sources */,
 				A5D2B9FA27CE6AD5009F931F /* addTransactionTableViewController.swift in Sources */,
@@ -427,6 +495,7 @@
 		};
 		A513694C27C4B66C001E94C2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 55A449917104170AC9064B38 /* Pods-stockTracker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -460,6 +529,7 @@
 		};
 		A513694D27C4B66C001E94C2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C3C2CC5F12AE76C6FAA6CF91 /* Pods-stockTracker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

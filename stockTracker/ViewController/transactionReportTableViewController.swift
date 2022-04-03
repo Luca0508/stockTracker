@@ -8,6 +8,7 @@
 import UIKit
 import CoreData
 import Charts
+import SideMenu
 
 
 class transactionReportTableViewController: UITableViewController {
@@ -23,6 +24,7 @@ class transactionReportTableViewController: UITableViewController {
     var changeStockSymbol : String?
     var changeImportedSymbolSet : Set<String>?
     
+    var sideMenu : SideMenuNavigationController?
     
     @IBOutlet weak var pieChartView: PieChartView!
     
@@ -41,6 +43,15 @@ class transactionReportTableViewController: UITableViewController {
 //        stockStatisticsList.removeAll()
         
         fetchData()
+        
+        // sidemenu setting
+        sideMenu = SideMenuNavigationController(rootViewController: sideMenuTableViewController())
+        sideMenu?.leftSide = true
+        
+        SideMenuManager.default.leftMenuNavigationController = sideMenu
+        SideMenuManager.default.addPanGestureToPresent(toView: self.view)
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -59,6 +70,10 @@ class transactionReportTableViewController: UITableViewController {
     }
     
     // MARK: - Table view data source
+    
+    @IBAction func didTapMenu(){
+        present(sideMenu!, animated: true, completion: nil)
+    }
     func fetchData(){
         transactionRecords.removeAll()
         
