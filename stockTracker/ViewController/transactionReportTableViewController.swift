@@ -41,17 +41,16 @@ class transactionReportTableViewController: UITableViewController {
 //        reset all the transaction
 //        resetAllRecords(in: "TransactionRecord")
 //        stockStatisticsList.removeAll()
-        
+     
         fetchData()
         
         // sidemenu setting
         sideMenu = SideMenuNavigationController(rootViewController: sideMenuTableViewController())
         sideMenu?.leftSide = true
         
+        // add gester which swipe left to get the sidemenu
         SideMenuManager.default.leftMenuNavigationController = sideMenu
         SideMenuManager.default.addPanGestureToPresent(toView: self.view)
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -71,9 +70,13 @@ class transactionReportTableViewController: UITableViewController {
     
     // MARK: - Table view data source
     
+    
+    // functin for sidemenu
     @IBAction func didTapMenu(){
         present(sideMenu!, animated: true, completion: nil)
     }
+    
+    // get the transaction record from core data
     func fetchData(){
         transactionRecords.removeAll()
         
@@ -106,7 +109,21 @@ class transactionReportTableViewController: UITableViewController {
             if let s = s{
                 symbolList.append(s)
             }
-            
+        }
+        
+        // delete the stat info for the stocksymbol that are no longer in coredata
+        var stockStatistictSymbolList = Set<String>()
+        for statInfo in stockStatisticsList{
+            stockStatistictSymbolList.insert(statInfo.stockSymbol)
+        }
+        
+        let extraSymbol = stockStatistictSymbolList.subtracting(Set(symbolList))
+        if !extraSymbol.isEmpty{
+            for symbol in extraSymbol{
+                if let index = stockStatisticsList.firstIndex(where:{$0.stockSymbol == symbol}){
+                    stockStatisticsList.remove(at: index)
+                }
+            }
         }
     }
     
@@ -163,6 +180,7 @@ class transactionReportTableViewController: UITableViewController {
     
         
     // entity = Your_Entity_Name
+    // clean all the data from core data
     func resetAllRecords(in entity : String){
         let context = ( UIApplication.shared.delegate as! AppDelegate ).persistentContainer.viewContext
         let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
@@ -212,7 +230,7 @@ class transactionReportTableViewController: UITableViewController {
         performSegue(withIdentifier: "showStockDetail", sender: nil)
     }
     
-    
+    // send the data to TransationDetail
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let controller = segue.destination as? transactionDetailTableViewController,
          let row = tableView.indexPathForSelectedRow?.row{
@@ -227,22 +245,10 @@ class transactionReportTableViewController: UITableViewController {
         }
     }
     
-    // remove the delete option while editing
-    override func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        return.none
-    }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        container.viewContext.delete(self.fetchedResultController.object(at: indexPath))
-        container.saveContext()
-
-    }
     
+    // update stockStatistics for specific stock
     func updateStockStatistics(changeStockSymbol : String){
-        
         // filter and sort
         let changeStockTransactionRecords = transactionRecords.filter({$0.stockSymbol == changeStockSymbol}).sorted(by: {$0.tradeDate! < $1.tradeDate!})
         
@@ -315,47 +321,15 @@ extension transactionReportTableViewController : addTransactionTableViewControll
 }
 
 extension transactionReportTableViewController : NSFetchedResultsControllerDelegate{
-
-//    func controllerWillChangeContent( _ controller: NSFetchedResultsController<NSFetchRequestResult>){
-//        tableView.beginUpdates()
-//    }
+    
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-//        switch type {
-//        case .insert:
-//            if let newIndexPath = newIndexPath{
-//                tableView.insertRows(at: [newIndexPath], with: .automatic)
-//            }
-//        case .delete:
-//            if let indexPath = indexPath {
-//                tableView.deleteRows(at: [indexPath], with: .automatic)
-//            }
-//        case .move:
-//            if let indexPath = indexPath,
-//            let newIndexPath = newIndexPath {
-//                tableView.moveRow(at: indexPath, to: newIndexPath)
-//            }
-//        case .update:
-//            if let indexPath = indexPath {
-//                tableView.reloadRows(at: [indexPath], with: .automatic)
-//            }
-//        default:
-//            tableView.reloadData()
-//
-//        }
         if let fetchobject = controller.fetchedObjects{
             transactionRecords = fetchobject as! [TransactionRecord]
             groupby()
             
-            
             tableView.reloadData()
-
-
         }
-
     }
-//    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-//        tableView.endUpdates()
-//    }
 }
 
 
