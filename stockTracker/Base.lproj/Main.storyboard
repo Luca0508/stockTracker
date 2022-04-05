@@ -186,13 +186,13 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="hnb-AZ-XrI">
                                             <rect key="frame" x="15" y="8.5" width="117.5" height="48.5"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Symbol" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3OO-I3-G9a">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Symbol" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3OO-I3-G9a">
                                                     <rect key="frame" x="0.0" y="0.0" width="65.5" height="23"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="CompanyName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R8Y-3y-Q8H">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CompanyName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R8Y-3y-Q8H">
                                                     <rect key="frame" x="0.0" y="28" width="117.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -227,25 +227,25 @@
         <!--Definition View Controller-->
         <scene sceneID="6yc-BO-jly">
             <objects>
-                <viewController id="le2-t3-AXj" customClass="definitionViewController" customModule="stockTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="definitionViewController" id="le2-t3-AXj" customClass="definitionViewController" customModule="stockTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AJr-yT-v4G">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="168" translatesAutoresizingMaskIntoConstraints="NO" id="xGm-zo-0ge">
-                                <rect key="frame" x="25" y="94" width="364" height="718"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="35" translatesAutoresizingMaskIntoConstraints="NO" id="xGm-zo-0ge">
+                                <rect key="frame" x="17" y="119" width="380" height="668"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="0jB-8e-SdC">
-                                        <rect key="frame" x="0.0" y="0.0" width="356.5" height="139"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="0jB-8e-SdC">
+                                        <rect key="frame" x="0.0" y="0.0" width="356.5" height="203.5"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Average Dollar Cost:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hIH-aP-CtK">
-                                                <rect key="frame" x="0.0" y="0.0" width="184.5" height="40.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Average Dollar Cost:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hIH-aP-CtK">
+                                                <rect key="frame" x="0.0" y="0.0" width="184.5" height="23"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TV7-MW-wbh">
-                                                <rect key="frame" x="0.0" y="48.5" width="356.5" height="90.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TV7-MW-wbh">
+                                                <rect key="frame" x="0.0" y="43" width="356.5" height="90.5"/>
                                                 <attributedString key="attributedText">
                                                     <fragment content="Average cost of you holding stock. - average price won't be changed while selling the stock - ">
                                                         <attributes>
@@ -257,19 +257,23 @@
                                                 </attributedString>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9TE-hh-YgL" customClass="MTMathUILabel">
+                                                <rect key="frame" x="0.0" y="153.5" width="240" height="50"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            </view>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="SZX-hm-bYx">
-                                        <rect key="frame" x="0.0" y="307" width="356.5" height="121.5"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="SZX-hm-bYx">
+                                        <rect key="frame" x="0.0" y="238.5" width="356.5" height="334.5"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Average Price:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gRb-22-7a1">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Average Price:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gRb-22-7a1">
                                                 <rect key="frame" x="0.0" y="0.0" width="131" height="23"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TfW-QG-1G1">
-                                                <rect key="frame" x="0.0" y="31" width="356.5" height="90.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eUX-7W-IIs">
+                                                <rect key="frame" x="0.0" y="43" width="356.5" height="90.5"/>
                                                 <attributedString key="attributedText">
                                                     <fragment content="Average cost of you holding stock. - average price won't be changed while selling the stock - ">
                                                         <attributes>
@@ -281,19 +285,23 @@
                                                 </attributedString>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vio-hi-MGm" customClass="MTMathUILabel">
+                                                <rect key="frame" x="0.0" y="153.5" width="240" height="181"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            </view>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="g8T-bu-yep">
-                                        <rect key="frame" x="0.0" y="596.5" width="356.5" height="121.5"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="g8T-bu-yep">
+                                        <rect key="frame" x="0.0" y="608" width="356.5" height="60"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Earning:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NYi-LK-heX">
-                                                <rect key="frame" x="0.0" y="0.0" width="75.5" height="23"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Earning:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NYi-LK-heX">
+                                                <rect key="frame" x="0.0" y="0.0" width="75.5" height="20"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q8T-g4-jvT">
-                                                <rect key="frame" x="0.0" y="31" width="356.5" height="90.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q8T-g4-jvT">
+                                                <rect key="frame" x="0.0" y="40" width="356.5" height="0.0"/>
                                                 <attributedString key="attributedText">
                                                     <fragment content="Average cost of you holding stock. - average price won't be changed while selling the stock - ">
                                                         <attributes>
@@ -305,6 +313,10 @@
                                                 </attributedString>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tpy-1f-XcQ" customClass="MTMathUILabel">
+                                                <rect key="frame" x="0.0" y="60" width="240" height="0.0"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            </view>
                                         </subviews>
                                     </stackView>
                                 </subviews>
@@ -313,21 +325,24 @@
                         <viewLayoutGuide key="safeArea" id="uAj-cu-Liq"/>
                         <color key="backgroundColor" systemColor="labelColor"/>
                         <constraints>
-                            <constraint firstItem="uAj-cu-Liq" firstAttribute="bottom" secondItem="xGm-zo-0ge" secondAttribute="bottom" constant="50" id="0JB-0v-l2t"/>
-                            <constraint firstItem="xGm-zo-0ge" firstAttribute="leading" secondItem="uAj-cu-Liq" secondAttribute="leading" constant="25" id="9Il-Kq-Zd4"/>
-                            <constraint firstAttribute="trailing" secondItem="xGm-zo-0ge" secondAttribute="trailing" constant="25" id="iHH-rz-QHV"/>
-                            <constraint firstItem="xGm-zo-0ge" firstAttribute="top" secondItem="uAj-cu-Liq" secondAttribute="top" constant="50" id="uOu-UL-2ko"/>
+                            <constraint firstItem="uAj-cu-Liq" firstAttribute="bottom" secondItem="xGm-zo-0ge" secondAttribute="bottom" constant="75" id="0JB-0v-l2t"/>
+                            <constraint firstItem="xGm-zo-0ge" firstAttribute="leading" secondItem="uAj-cu-Liq" secondAttribute="leading" constant="17" id="9Il-Kq-Zd4"/>
+                            <constraint firstAttribute="trailing" secondItem="xGm-zo-0ge" secondAttribute="trailing" constant="17" id="iHH-rz-QHV"/>
+                            <constraint firstItem="xGm-zo-0ge" firstAttribute="top" secondItem="uAj-cu-Liq" secondAttribute="top" constant="75" id="uOu-UL-2ko"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="AvgDollarCostDefinitionLabel" destination="TV7-MW-wbh" id="Ht5-Q2-w8Q"/>
-                        <outlet property="AvgPriceDefinitionLabel" destination="TfW-QG-1G1" id="2IT-BK-idU"/>
-                        <outlet property="EarningDefinitionLabel" destination="Q8T-g4-jvT" id="Xlw-HL-cwt"/>
+                        <outlet property="AvgDollarCostDefinitionLabel" destination="TV7-MW-wbh" id="WvM-QB-CBg"/>
+                        <outlet property="AvgPriceDefinitionLabel" destination="eUX-7W-IIs" id="JH6-7e-g49"/>
+                        <outlet property="EarningDefinitionLabel" destination="Q8T-g4-jvT" id="zWQ-Q2-wdl"/>
+                        <outlet property="avgDollarCostMathLabel" destination="9TE-hh-YgL" id="aqJ-1A-ihC"/>
+                        <outlet property="avgPriceMathLabel" destination="Vio-hi-MGm" id="Yqk-oM-lNq"/>
+                        <outlet property="earningMathLabel" destination="tpy-1f-XcQ" id="EHQ-cn-Frr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EKe-Or-6yI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-755.07246376811599" y="52.901785714285715"/>
+            <point key="canvasLocation" x="-378.26086956521743" y="45.535714285714285"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="eiZ-S7-aZ7">
@@ -386,8 +401,8 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1C4-W2-4XY">
-                                                    <rect key="frame" x="378" y="33" width="15" height="15"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1C4-W2-4XY">
+                                                    <rect key="frame" x="378" y="33" width="11" height="14"/>
                                                     <imageReference key="image" image="chevron.right" catalog="system" symbolScale="small"/>
                                                 </imageView>
                                             </subviews>
@@ -784,7 +799,8 @@ Balance</string>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="r15-QN-Fa5">
-                        <barButtonItem key="leftBarButtonItem" title="MENU" id="kjj-uK-Yzx">
+                        <barButtonItem key="leftBarButtonItem" title="MENU" image="list.dash" catalog="system" id="kjj-uK-Yzx">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="didTapMenu" destination="kty-W5-Lrq" id="hug-0t-xe2"/>
                             </connections>
@@ -1213,6 +1229,11 @@ Balance</string>
             <point key="canvasLocation" x="239" y="1737"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="9TE-hh-YgL"/>
+        <designable name="Vio-hi-MGm"/>
+        <designable name="tpy-1f-XcQ"/>
+    </designables>
     <inferredMetricsTieBreakers>
         <segue reference="UtK-QD-bKZ"/>
         <segue reference="SSZ-XT-HX4"/>
@@ -1223,6 +1244,7 @@ Balance</string>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
         <image name="importedfileformat" width="524" height="320"/>
         <image name="list.bullet.rectangle.portrait.fill" catalog="system" width="115" height="128"/>
+        <image name="list.dash" catalog="system" width="128" height="85"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
