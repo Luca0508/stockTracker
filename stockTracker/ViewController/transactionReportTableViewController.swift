@@ -39,8 +39,8 @@ class transactionReportTableViewController: UITableViewController {
         tableView.rowHeight = 70
         
 //        reset all the transaction
-//        resetAllRecords(in: "TransactionRecord")
-//        stockStatisticsList.removeAll()
+        resetAllRecords(in: "TransactionRecord")
+        stockStatisticsList.removeAll()
      
         fetchData()
         
@@ -60,12 +60,15 @@ class transactionReportTableViewController: UITableViewController {
                 updateStockStatistics(changeStockSymbol: changeSymbol)
             }
         }
+        changeImportedSymbolSet?.removeAll()
+        
         
         if let stockStatisticsList = stockStatistics.loadStockStatistics(){
             self.stockStatisticsList = stockStatisticsList
         }
         setPieChartView()
         tableView.reloadData()
+        print("viewWillAppear : \(stockStatisticsList)")
     }
     
     // MARK: - Table view data source
@@ -108,21 +111,6 @@ class transactionReportTableViewController: UITableViewController {
         for s in groupbyDictionary.keys{
             if let s = s{
                 symbolList.append(s)
-            }
-        }
-        
-        // delete the stat info for the stocksymbol that are no longer in coredata
-        var stockStatistictSymbolList = Set<String>()
-        for statInfo in stockStatisticsList{
-            stockStatistictSymbolList.insert(statInfo.stockSymbol)
-        }
-        
-        let extraSymbol = stockStatistictSymbolList.subtracting(Set(symbolList))
-        if !extraSymbol.isEmpty{
-            for symbol in extraSymbol{
-                if let index = stockStatisticsList.firstIndex(where:{$0.stockSymbol == symbol}){
-                    stockStatisticsList.remove(at: index)
-                }
             }
         }
     }
@@ -248,6 +236,7 @@ class transactionReportTableViewController: UITableViewController {
     
     
     // update stockStatistics for specific stock
+    // only be called when user add the transaction directly from TransactionReportView or import the .csv file
     func updateStockStatistics(changeStockSymbol : String){
         // filter and sort
         let changeStockTransactionRecords = transactionRecords.filter({$0.stockSymbol == changeStockSymbol}).sorted(by: {$0.tradeDate! < $1.tradeDate!})
@@ -280,24 +269,31 @@ class transactionReportTableViewController: UITableViewController {
         let totalCost = changeStockTransactionRecords.reduce(0.0, {return $0 + $1.total})
         
         if let index = stockStatisticsList.firstIndex(where: {$0.stockSymbol == changeStockSymbol}){
+            if changeStockTransactionRecords.count == 0 {
+                stockStatisticsList.remove(at: index)
+            }else {
+                // total Shares
+                stockStatisticsList[index].totalQuantity = CumShares
+                
+                // get totalDollarCost
+                stockStatisticsList[index].totalDollarCost = totalCost
+                       
+                // average price
+                stockStatisticsList[index].prevAveragePrice = prevAvgPrice
+                stockStatisticsList[index].AveragePrice = AvgPrice
+                
+                // earning
+                stockStatisticsList[index].earning = CumEarning
+                stockStatisticsList[index].earningChange = Earning
+            }
             
-            // total Shares
-            stockStatisticsList[index].totalQuantity = CumShares
             
-            // get totalDollarCost
-            stockStatisticsList[index].totalDollarCost = totalCost
-                   
-            // average price
-            stockStatisticsList[index].prevAveragePrice = prevAvgPrice
-            stockStatisticsList[index].AveragePrice = AvgPrice
-            
-            // earning
-            stockStatisticsList[index].earning = CumEarning
-            stockStatisticsList[index].earningChange = Earning
         }else{
             stockStatisticsList.append(stockStatistics(stockSymbol: changeStockSymbol, totalQuantity: CumShares, totalDollarCost: totalCost,  AveragePrice: AvgPrice, prevAveragePrice: prevAvgPrice, earning: CumEarning, earningChange: Earning))
         }
+        print("update Stat : \(stockStatisticsList)")
     }
+    
 }
 extension transactionReportTableViewController : addTransactionTableViewControllerDelegate{
     func AddTransactionTableViewController(_ controller : addTransactionTableViewController, sendTransaction transaction : TransactionRecord){

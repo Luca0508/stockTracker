@@ -97,17 +97,17 @@ class transactionDetailTableViewController: UITableViewController {
         let nineAM = now.dateAt(hours: 9, minutes: 30).addingTimeInterval(TimeInterval.init(newYorkTimeZone.secondsFromGMT()))
         let fourPM = now.dateAt(hours: 16, minutes: 0).addingTimeInterval(TimeInterval.init(newYorkTimeZone.secondsFromGMT()))
 
-        print("9am \(nineAM) ")
-        print("16pm \(fourPM) ")
-        print("now: \(now)")
+//        print("9am \(nineAM) ")
+//        print("16pm \(fourPM) ")
+//        print("now: \(now)")
   
         if !NSCalendar(identifier: .gregorian)!.isDateInWeekend(now) &&
             now >= nineAM &&
             now <= fourPM{
-            print("stockMarketOpen")
+//            print("stockMarketOpen")
             setSession()
         }else{
-            print("stockMarketClose")
+//            print("stockMarketClose")
             
             if let stockSymbol = stockSymbol {
                 fetchStockPrice(stockSymbol: stockSymbol)
@@ -232,7 +232,6 @@ class transactionDetailTableViewController: UITableViewController {
         
         if let stockSymbol = stockSymbol,
            let index = stockStatisticsList.firstIndex(where: {$0.stockSymbol == stockSymbol}){
-            
             // total Shares
             stockStatisticsList[index].totalQuantity = CumShares
             
@@ -250,7 +249,14 @@ class transactionDetailTableViewController: UITableViewController {
             stockStatisticsList[index].earningChange = Earning
             
             updateUI(stockStat: stockStatisticsList[index])
+            
+            if transactionRecords.count == 0{
+                stockStatisticsList.remove(at: index)
+            }
+            
+
         }
+        
     }
     
     func getChangeLabelText(change : Double, changePercentage : Double, label : UILabel){
